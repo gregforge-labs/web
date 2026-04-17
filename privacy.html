@@ -4,15 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Jyotish Vani</title>
-<link rel="stylesheet" href="/_style.css">
+<link rel="stylesheet" href="/style.css?v=20260417">
 </head>
 <body>
 
-<p class="nav"><a href="/">← Gregforge Labs</a></p>
+<header>
+<p class="nav"><a href="/">Gregforge Labs</a></p>
 
 <h1>Privacy Policy — Jyotish Vani</h1>
 <p class="meta">Last updated: April 17, 2026</p>
+</header>
 
+<main>
 <p>This Privacy Policy describes how <strong>Gregforge Labs LLC</strong> ("we", "our", or "us") collects, uses, and protects information when you use the <strong>Jyotish Vani</strong> mobile application (the "App"). By using the App you agree to this policy.</p>
 
 <h2>1. Who we are</h2>
@@ -22,9 +25,10 @@
 <p>We collect only what is needed to operate the App. We do not sell your data.</p>
 <ul>
   <li><strong>Account information.</strong> Email address and password (the password is handled by Firebase Authentication and is never visible to us in plaintext).</li>
-  <li><strong>Birth profile.</strong> Name, date of birth, time of birth, place of birth (with derived latitude, longitude, and timezone), gender, and (optional) current location and occupation. You provide this so the App can compute your astrological chart.</li>
+  <li><strong>Birth profile.</strong> Name, date of birth, time of birth, place of birth (with derived latitude, longitude, and timezone), gender, and optional occupation. You provide this so the App can compute your astrological chart.</li>
   <li><strong>Chat history.</strong> Messages you send to the in-app astrology assistant ("Vani") and the assistant's replies. Stored locally on your device for conversation continuity. The current message and recent context are sent to our backend service for each turn.</li>
-  <li><strong>Device and diagnostic information.</strong> Generic technical data (app version, OS version, anonymized error reports). We do not collect advertising identifiers, contacts, photos, microphone, camera, or precise location.</li>
+  <li><strong>Current location you enter.</strong> If you choose to set a current location, we store the place name and derived latitude, longitude, and timezone locally on your device so timing features can use the correct place.</li>
+  <li><strong>Device and diagnostic information.</strong> Generic technical data such as app version, OS version, timestamps, error traces, and anonymized request metadata. We do not collect advertising identifiers, contacts, photos, microphone, camera, or device GPS location.</li>
 </ul>
 
 <h2>3. How we use information</h2>
@@ -41,17 +45,17 @@
 <ul>
   <li><strong>Google Firebase Authentication</strong> — manages your email/password login.</li>
   <li><strong>Google Cloud Run (United States)</strong> — hosts our backend chat service.</li>
-  <li><strong>Anthropic, PBC</strong> — provides the large language model that powers the assistant. Your message and the relevant context are sent to Anthropic's API to generate each reply. Anthropic does not use this content to train its models.</li>
+  <li><strong>Anthropic, PBC</strong> — provides the large language model that powers the assistant. Your message, recent chat context, and relevant astrological context are sent to Anthropic's API to generate each reply. Anthropic does not use this content to train its models.</li>
   <li><strong>Google Maps Platform (Places &amp; Time Zone APIs)</strong> — used to look up the city you typed during onboarding and to resolve its timezone.</li>
 </ul>
 
 <h2>5. Where data is stored</h2>
-<p>Your birth profile and chat history are stored <strong>locally on your device</strong>. Account credentials are stored by Firebase Authentication on Google's servers in the United States. Each chat message you send is processed in transit through our Cloud Run service in the United States and Anthropic's API; we do not retain chat content on our servers after the response is returned.</p>
+<p>Your birth profile, current location, and chat history are stored <strong>locally on your device</strong>. Account credentials are stored by Firebase Authentication on Google's servers in the United States. Each chat message you send is processed in transit through our Cloud Run service in the United States and Anthropic's API; we do not retain chat content on our servers after the response is returned.</p>
 
 <h2>6. Data retention</h2>
 <ul>
   <li><strong>Account.</strong> Retained as long as you maintain an account. You may delete your account at any time (see Section 8); deletion removes your Firebase authentication record.</li>
-  <li><strong>Birth profile and chat history.</strong> Stored on your device. Removed when you delete the App or clear app data.</li>
+  <li><strong>Birth profile, current location, and chat history.</strong> Stored on your device. Removed when you delete the App, clear app data, or use in-app clearing controls where available.</li>
   <li><strong>Backend logs.</strong> Operational logs (timestamps, error traces, anonymized request metadata) are retained for up to 30 days for debugging and abuse prevention.</li>
 </ul>
 
@@ -60,7 +64,7 @@
 
 <h2>8. Your choices and rights</h2>
 <ul>
-  <li><strong>Access, correction, deletion.</strong> You can edit your birth profile in the App at any time. To delete your account and associated authentication record, email <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a> from the address you registered with.</li>
+  <li><strong>Access, correction, deletion.</strong> You can edit your birth profile in the App at any time. To request deletion of your account and associated data, use the in-app account deletion option or visit <a href="/delete-account.html">Account &amp; Data Deletion</a>.</li>
   <li><strong>California residents (CCPA/CPRA).</strong> You have the right to know what personal information we collect, request deletion, and not be discriminated against for exercising these rights. To exercise them, contact us as above.</li>
   <li><strong>EEA / UK residents (GDPR).</strong> You have rights of access, rectification, erasure, restriction, portability, and objection. The lawful basis for processing your information is the contract you enter into by using the App, and our legitimate interest in operating the service.</li>
 </ul>
@@ -77,6 +81,7 @@
 <h2>12. Contact</h2>
 <p>Questions or requests: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a><br>
 Mail: Gregforge Labs LLC, 675 Tasman Drive, Apt 2314, Sunnyvale, CA 94089, USA.</p>
+</main>
 
 </body>
 </html>
