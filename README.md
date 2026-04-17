@@ -10,6 +10,7 @@ Static pages for Gregforge Labs LLC. Hosted via GitHub Pages.
 - `eula.html` — end-user license agreement
 - `delete-account.html` — account and data deletion instructions
 - `style.css` — shared styling
+- `assets/` — Jyotish Vani icon assets reused from the app
 - `.nojekyll` — disables Jekyll processing on GitHub Pages
 
 To preview locally:
