@@ -6,7 +6,7 @@
 <title>Privacy Policy — Jyotish Vani</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
-<link rel="stylesheet" href="/style.css?v=20260418">
+<link rel="stylesheet" href="/style.css?v=20260419">
 </head>
 <body>
 
@@ -24,19 +24,20 @@
 </header>
 
 <main>
-<p>This Privacy Policy describes how <strong>Gregforge Labs LLC</strong> ("we", "our", or "us") collects, uses, and protects information when you use the <strong>Jyotish Vani</strong> mobile application (the "App"). By using the App you agree to this policy.</p>
+<p>This Privacy Policy describes how <strong>Gregforge Labs LLC</strong> ("we", "our", or "us") collects, uses, discloses, retains, and protects information when you use the <strong>Jyotish Vani</strong> mobile application (the "App").</p>
 
 <h2>1. Who we are</h2>
-<p>Gregforge Labs LLC, a California limited liability company (Entity #B20260047024), 675 Tasman Drive, Apt 2314, Sunnyvale, CA 94089, United States. Contact: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a>.</p>
+<p>Gregforge Labs LLC is a California limited liability company based in Sunnyvale, California, United States. Privacy contact: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a>.</p>
 
 <h2>2. Information we collect</h2>
-<p>We collect only what is needed to operate the App. We do not sell your data.</p>
+<p>We collect only what is needed to operate the App. We do not sell personal information, and we do not share personal information for cross-context behavioral advertising.</p>
 <ul>
-  <li><strong>Account information.</strong> Email address and password (the password is handled by Firebase Authentication and is never visible to us in plaintext).</li>
-  <li><strong>Birth profile.</strong> Name, date of birth, time of birth, place of birth (with derived latitude, longitude, and timezone), gender, and optional occupation. You provide this so the App can compute your astrological chart.</li>
+  <li><strong>Account information.</strong> Email address, authentication provider, verification status, and account identifiers. Passwords are handled by Firebase Authentication and are never visible to us in plaintext.</li>
+  <li><strong>Birth profile.</strong> Name, date of birth, time of birth, place of birth with derived latitude, longitude, and timezone, gender, and optional occupation. You provide this so the App can compute your astrological chart.</li>
   <li><strong>Chat history.</strong> Messages you send to the in-app astrology assistant ("Vani") and the assistant's replies. Stored locally on your device for conversation continuity. The current message and recent context are sent to our backend service for each turn.</li>
-  <li><strong>Current location you enter.</strong> If you choose to set a current location, we store the place name and derived latitude, longitude, and timezone locally on your device so timing features can use the correct place.</li>
-  <li><strong>Device and diagnostic information.</strong> Generic technical data such as app version, OS version, timestamps, error traces, and anonymized request metadata. We do not collect advertising identifiers, contacts, photos, microphone, camera, or device GPS location.</li>
+  <li><strong>Location you enter.</strong> If you choose to set a birth place or current place, we process the place name and derived latitude, longitude, and timezone so chart and timing features can use the correct location. The App does not request device GPS permission.</li>
+  <li><strong>Device and diagnostic information.</strong> Generic technical data such as app version, OS version, timestamps, error traces, request metadata, and abuse-prevention signals. We do not collect advertising identifiers, contacts, photos, microphone recordings, camera images, SMS, call logs, or device GPS location.</li>
+  <li><strong>Purchase information.</strong> If paid features are offered, purchase status, subscription status, product identifiers, and transaction identifiers may be received from Google Play or Apple so the App can provide access to purchased features. We do not receive your full payment-card number.</li>
 </ul>
 
 <h2>3. How we use information</h2>
@@ -44,27 +45,31 @@
   <li>To create and authenticate your account.</li>
   <li>To compute your Vedic astrological chart and personalized interpretations.</li>
   <li>To deliver answers from the in-app assistant.</li>
+  <li>To manage purchases, entitlements, subscription access, and account deletion requests.</li>
   <li>To diagnose crashes and improve reliability.</li>
+  <li>To prevent abuse, enforce our Terms, and protect the Service.</li>
   <li>To comply with applicable laws.</li>
 </ul>
 
 <h2>4. Service providers (sub-processors)</h2>
-<p>We use a small number of trusted providers to operate the App. They process information only on our behalf and only for the purposes described here.</p>
+<p>We use service providers to operate the App. Providers may change over time as the Service evolves, but they process information only for the purposes described here and under agreements or platform terms intended to protect user data. Current provider categories and examples include:</p>
 <ul>
-  <li><strong>Google Firebase Authentication</strong> — manages your email/password login.</li>
+  <li><strong>Google Firebase Authentication</strong> — manages account authentication, including email/password login and Google Sign-In where enabled.</li>
   <li><strong>Google Cloud Run (United States)</strong> — hosts our backend chat service.</li>
-  <li><strong>Anthropic, PBC</strong> — provides the large language model that powers the assistant. Your message, recent chat context, and relevant astrological context are sent to Anthropic's API to generate each reply. Anthropic does not use this content to train its models.</li>
+  <li><strong>AI model providers</strong> — provide the large language model or related AI services that power Vani. Your message, recent chat context, and relevant astrological context may be sent to a third-party AI provider to generate each reply. We select commercial providers that offer contractual or policy commitments around data handling; current providers may state that commercial API inputs and outputs are not used for model training by default unless the customer opts in or submits feedback.</li>
   <li><strong>Google Maps Platform (Places &amp; Time Zone APIs)</strong> — used to look up the city you typed during onboarding and to resolve its timezone.</li>
+  <li><strong>Google Play and Apple</strong> — process in-app purchases, subscriptions, cancellations, refunds, taxes, receipts, and payment disputes when paid features are offered.</li>
 </ul>
 
 <h2>5. Where data is stored</h2>
-<p>Your birth profile, current location, and chat history are stored <strong>locally on your device</strong>. Account credentials are stored by Firebase Authentication on Google's servers in the United States. Each chat message you send is processed in transit through our Cloud Run service in the United States and Anthropic's API; we do not retain chat content on our servers after the response is returned.</p>
+<p>Your birth profile, current location, and chat history are stored <strong>locally on your device</strong>. Account credentials are stored by Firebase Authentication on Google's systems. Each chat message you send is processed in transit through our backend service and a third-party AI provider; we do not intentionally retain chat content on our own servers after the response is returned, except for transient processing, security, debugging, or legal compliance where required.</p>
 
 <h2>6. Data retention</h2>
 <ul>
-  <li><strong>Account.</strong> Retained as long as you maintain an account. You may delete your account at any time (see Section 8); deletion removes your Firebase authentication record.</li>
+  <li><strong>Account.</strong> Retained as long as you maintain an account. You may delete your account at any time (see Section 8); deletion removes or de-identifies the Firebase authentication record and associated server-side account data we control, subject to limited legal, security, fraud-prevention, dispute, tax, and accounting retention needs.</li>
   <li><strong>Birth profile, current location, and chat history.</strong> Stored on your device. Removed when you delete the App, clear app data, or use in-app clearing controls where available.</li>
-  <li><strong>Backend logs.</strong> Operational logs (timestamps, error traces, anonymized request metadata) are retained for up to 30 days for debugging and abuse prevention.</li>
+  <li><strong>Backend logs.</strong> Operational logs such as timestamps, error traces, request metadata, and abuse-prevention signals are retained for up to 30 days unless a longer period is reasonably needed for security, fraud prevention, dispute resolution, or legal compliance.</li>
+  <li><strong>Purchase records.</strong> Purchase and subscription records are primarily retained by Google Play or Apple under their own policies. We may retain entitlement or support records as needed to provide access, handle disputes, and comply with tax or accounting obligations.</li>
 </ul>
 
 <h2>7. Children</h2>
@@ -72,9 +77,10 @@
 
 <h2>8. Your choices and rights</h2>
 <ul>
-  <li><strong>Access, correction, deletion.</strong> You can edit your birth profile in the App at any time. To request deletion of your account and associated data, use the in-app account deletion option or visit <a href="/delete-account.html">Account &amp; Data Deletion</a>.</li>
-  <li><strong>California residents (CCPA/CPRA).</strong> You have the right to know what personal information we collect, request deletion, and not be discriminated against for exercising these rights. To exercise them, contact us as above.</li>
-  <li><strong>EEA / UK residents (GDPR).</strong> You have rights of access, rectification, erasure, restriction, portability, and objection. The lawful basis for processing your information is the contract you enter into by using the App, and our legitimate interest in operating the service.</li>
+  <li><strong>Access, correction, deletion.</strong> You can edit your birth profile in the App at any time. To delete your account and associated data, use the in-app account deletion option or visit <a href="/delete-account.html">Account &amp; Data Deletion</a>.</li>
+  <li><strong>California residents (CCPA/CPRA).</strong> You may have rights to know, access, correct, delete, and limit certain uses of personal information, and the right not to be discriminated against for exercising those rights. We do not sell personal information.</li>
+  <li><strong>EEA / UK residents (GDPR/UK GDPR).</strong> Depending on your location and circumstances, you may have rights of access, rectification, erasure, restriction, portability, and objection. Our lawful bases include performance of a contract, legitimate interests in operating and protecting the Service, consent where required, and compliance with legal obligations.</li>
+  <li><strong>Verification.</strong> We may need to verify your identity or account ownership before acting on a privacy request.</li>
 </ul>
 
 <h2>9. Security</h2>
@@ -87,8 +93,7 @@
 <p>This policy is governed by the laws of the State of California, United States, without regard to conflict-of-laws principles.</p>
 
 <h2>12. Contact</h2>
-<p>Questions or requests: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a><br>
-Mail: Gregforge Labs LLC, 675 Tasman Drive, Apt 2314, Sunnyvale, CA 94089, USA.</p>
+<p>Questions or privacy requests: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a></p>
 </main>
 
 </body>

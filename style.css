@@ -219,25 +219,12 @@ code {
 }
 
 .product-strip {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  align-items: center;
   margin: 0 0 20px;
   padding: 16px;
   background: var(--gold-soft);
   border: 2px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow-soft);
-}
-
-.product-strip img {
-  width: 64px;
-  height: 64px;
-  border: 2px solid var(--ink);
-  border-radius: 8px;
-  background: var(--panel);
-  object-fit: cover;
 }
 
 .product-strip p {
@@ -253,9 +240,6 @@ code {
 }
 
 .card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
   min-height: 100%;
   margin: 0;
   padding: 16px;
@@ -268,15 +252,6 @@ code {
 .card:hover {
   transform: translate(-1px, -1px);
   box-shadow: 3px 3px 0 var(--ink);
-}
-
-.card-icon {
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--ink);
-  border-radius: 8px;
-  background: var(--gold-soft);
-  object-fit: cover;
 }
 
 .card a {
@@ -374,7 +349,6 @@ code {
     font-size: 1.9rem;
   }
 
-  .product-strip,
   .card {
     grid-template-columns: 1fr;
   }
