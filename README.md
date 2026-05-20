@@ -8,8 +8,11 @@ Static pages for Gregforge Labs LLC. Hosted via GitHub Pages.
 - `disclaimer.html` — astrology and AI-output disclaimer
 - `refund.html` — refund and subscription terms
 - `eula.html` — end-user license agreement
+- `licenses.html` — third-party notices and licenses (incl. Swiss Ephemeris Inside)
+- `accessibility.html` — accessibility statement (WCAG 2.1 AA target)
+- `cookies.html` — cookies and web-tracking notice for the static site
 - `delete-account.html` — account and data deletion instructions
-- `style.css` — shared styling
+- `style.css` — shared styling (Editorial-Celestial palette, mirrors the app theme)
 - `assets/` — Jyotish Vani icon assets reused from the app
 - `.nojekyll` — disables Jekyll processing on GitHub Pages
 
