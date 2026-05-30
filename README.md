@@ -3,6 +3,7 @@
 Static pages for Gregforge Labs LLC. Hosted via GitHub Pages.
 
 - `index.html` — landing page
+- `support.html` — support and app-review contact page
 - `privacy.html` — privacy policy for the Jyotish Vani app
 - `terms.html` — terms of service
 - `disclaimer.html` — astrology and AI-output disclaimer
