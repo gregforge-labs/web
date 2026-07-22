@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<script>if(location.protocol==='http:')location.replace(location.href.replace(/^http:/,'https:'));</script>
+<script>if(location.protocol==='http:'&&!/^(localhost|127\.|::1$)/.test(location.hostname))location.replace(location.href.replace(/^http:/,'https:'));</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Third-Party Notices &amp; Licenses — Jyotish Vani</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
-<link rel="stylesheet" href="/style.css?v=20260520">
+<link rel="stylesheet" href="/style.css?v=20260722">
 </head>
 <body>
 
 <header>
+<div class="page-nav">
 <a class="brand" href="/" aria-label="Gregforge Labs home">
   <img class="brand-icon" src="/assets/app-icon.png" alt="">
   <span class="brand-text">
@@ -20,6 +21,13 @@
     <span class="brand-subtitle">Gregforge Labs</span>
   </span>
 </a>
+<nav class="nav-links">
+  <a href="/#inside">Inside the app</a>
+  <a href="/#languages">Languages</a>
+  <a href="/#plans">Plans</a>
+  <a href="/support.html">Support</a>
+</nav>
+</div>
 
 <h1>Third-Party Notices &amp; Licenses</h1>
 <p class="meta">Last updated: May 20, 2026</p>
@@ -61,8 +69,37 @@
 <p>Notices, takedown requests, or license questions: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a></p>
 </main>
 
-<footer>
-  Gregforge Labs LLC · Sunnyvale, California · SWISS EPHEMERIS Inside
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="footer-head">Support</p>
+      <ul>
+        <li><a href="/support.html">Support &amp; contact</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/delete-account.html">Account &amp; data deletion</a></li>
+        <li><a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <ul>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/disclaimer.html">Disclaimer</a></li>
+        <li><a href="/refund.html">Refund &amp; Subscription Terms</a></li>
+        <li><a href="/eula.html">End-User License Agreement</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">More</p>
+      <ul>
+        <li><a href="/licenses.html">Third-Party Notices</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="/cookies.html">Cookies &amp; Web Tracking</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-line">Gregforge Labs LLC · Sunnyvale, California</p>
 </footer>
 </body>
 </html>
