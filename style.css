@@ -3,7 +3,9 @@
  * Mirrors the in-app theme (see src/config/theme.ts in the mobile app).
  * ============================================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+/* Fonts are loaded via <link> tags in each page's <head> (preconnect +
+   stylesheet) — an @import here would serialize CSS → font-CSS → font files
+   and visibly delay text on a serif-body site. */
 
 :root {
   color-scheme: light;
@@ -37,6 +39,7 @@
 
   /* type */
   --serif: "Source Serif 4", "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", serif;
+  --display: "Fraunces", "Source Serif 4", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -47,6 +50,9 @@
 
 html {
   background: var(--paper);
+  /* 1rem = 17px. The body used to be 17px over a 16px root, which made every
+     heading sized near 1rem render SMALLER than body copy. Size the root. */
+  font-size: 106.25%;
 }
 
 body {
@@ -57,7 +63,7 @@ body {
     radial-gradient(1100px 520px at 50% -180px, rgba(139, 111, 47, 0.08), transparent 70%),
     var(--paper);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 1rem;
   line-height: 1.62;
   font-feature-settings: "kern", "liga", "onum";
   -webkit-font-smoothing: antialiased;
@@ -131,9 +137,19 @@ footer {
 h1,
 h2,
 h3 {
-  line-height: 1.18;
-  letter-spacing: -0.005em;
   color: var(--ink);
+}
+
+h1,
+h2 {
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+/* h3s sit near body size — display leading and negative tracking hurt them */
+h3 {
+  line-height: 1.3;
+  letter-spacing: 0;
 }
 
 h1 {
@@ -253,13 +269,24 @@ hr {
   line-height: 1.1;
 }
 
-.brand-subtitle,
-.eyebrow {
+.brand-subtitle {
   color: var(--ink-3);
   font-family: var(--sans);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Section markers rank above the masthead byline: brass ties them to the
+   accent system, and the extra weight keeps them legible on parchment. */
+.eyebrow {
+  color: var(--brass);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -532,14 +559,15 @@ hr {
 
 /* =============================================================================
  * Landing page (index.html only — scoped under body.landing).
- * Legal/support pages keep the boxed-panel look above; everything below
- * widens the frame and adds product-page sections. Same palette throughout.
+ * v2 — display type layer (Fraunces), banded scroll rhythm, full palette.
+ * Legal/support pages keep the boxed-panel look above.
  * ============================================================================= */
 
 .landing {
   background:
-    radial-gradient(1400px 640px at 50% -220px, rgba(139, 111, 47, 0.10), transparent 70%),
+    radial-gradient(1400px 640px at 50% -220px, rgba(139, 111, 47, 0.16), transparent 70%),
     var(--paper);
+  overflow-x: hidden; /* the hero zodiac arc bleeds past small viewports */
 }
 
 .landing header,
@@ -564,32 +592,56 @@ hr {
 
 .landing .section,
 .landing .hero,
-.landing .nav,
 .landing .attribution,
 .landing .disclaimer-line,
-.landing .footer-cols,
-.landing .footer-line {
+.landing .orn {
   width: min(1060px, calc(100% - 40px));
   margin-left: auto;
   margin-right: auto;
 }
 
-/* nav ------------------------------------------------------------------------ */
+/* full-bleed band: background spans the viewport, children keep the frame */
+.landing .band {
+  width: 100%;
+  max-width: none;
+  padding: 62px 0 64px;
+}
+
+.landing .band > * {
+  width: min(1060px, calc(100% - 40px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* nav — sticky, with the page's persistent CTA ------------------------------- */
 
 .landing .nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 22px 0 8px;
+  padding: 10px max(20px, calc((100% - 1060px) / 2));
+  background: rgba(251, 247, 235, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.landing .nav .brand-icon {
+  width: 40px;
+  height: 40px;
 }
 
 .landing .nav-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 22px;
   font-family: var(--sans);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
 }
 
 .landing .nav-links a {
@@ -605,6 +657,78 @@ hr {
   border-bottom-color: var(--brass);
 }
 
+.landing .nav-cta,
+.landing .nav-links a.nav-cta {
+  padding: 7px 15px;
+  color: var(--paper-hi);
+  background: var(--brass);
+  border: 1px solid var(--brass);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.landing .nav-links a.nav-cta:hover {
+  color: var(--paper-hi);
+  background: var(--brass-2);
+  border-color: var(--brass-2);
+}
+
+/* display type layer ---------------------------------------------------------- */
+
+.landing .hero h1 {
+  margin: 10px 0 14px;
+  max-width: 17ch;
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 580;
+  font-size: clamp(2.5rem, 5.2vw, 3.625rem);
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+}
+
+.landing .section-title {
+  display: block;
+  margin: 8px 0 18px;
+  padding: 0;
+  border: none;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+/* the page's typographic drumbeat: a small brass tick above every title */
+.landing .section-title::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 2px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, var(--brass-2), var(--brass-3));
+}
+
+/* vermilion tilak dot — brand signature, hero + Vani + close only */
+.landing .eyebrow-tilak::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--vermilion);
+  vertical-align: 0.12em;
+}
+
+/* uppercase settings misalign with the body's oldstyle figures */
+.landing .eyebrow,
+.landing .plan-tag,
+.landing .fact-strip {
+  font-variant-numeric: lining-nums;
+}
+
 /* hero ------------------------------------------------------------------------ */
 
 .landing .hero {
@@ -612,26 +736,39 @@ hr {
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: 48px;
   align-items: center;
-  padding: 56px 0 30px;
-}
-
-.landing .hero h1 {
-  margin: 10px 0 14px;
-  max-width: 15ch;
-  font-size: clamp(2rem, 4.6vw, 3.1rem);
-  line-height: 1.12;
+  padding-top: 56px;
+  padding-bottom: 38px;
 }
 
 .landing .hero .lede {
   max-width: 54ch;
-  font-size: 1.08rem;
+  font-size: 1.176rem;
+  line-height: 1.5;
 }
 
 .landing .hero-note {
   margin-top: 12px;
   color: var(--ink-3);
   font-family: var(--sans);
-  font-size: 0.84rem;
+  font-size: 0.824rem;
+  line-height: 1.5;
+}
+
+.landing .hero-note strong {
+  color: var(--jade);
+  font-weight: 600;
+}
+
+.landing .hero-note a {
+  color: var(--ink-3);
+}
+
+.landing .fact-strip {
+  margin-top: 14px;
+  color: var(--brass);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
 }
 
 .landing .store-buttons {
@@ -645,13 +782,14 @@ hr {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 170px;
+  min-width: 172px;
   min-height: 54px;
   padding: 8px 20px 9px;
   color: var(--paper-hi);
-  background: var(--ink);
+  background: linear-gradient(180deg, #2c2822, var(--ink));
   border: 1px solid var(--ink);
   border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 1px 2px rgba(27, 24, 20, 0.25);
   text-decoration: none;
   line-height: 1.15;
   transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
@@ -659,7 +797,7 @@ hr {
 
 .landing .store-btn:hover {
   color: var(--paper-hi);
-  background: var(--lapis);
+  background: linear-gradient(180deg, var(--lapis-2), var(--lapis));
   border-color: var(--lapis);
   transform: translateY(-1px);
 }
@@ -684,12 +822,14 @@ hr {
 .landing .phone {
   margin: 0;
   padding: 10px;
-  background: #23201a;
-  border: 1px solid rgba(27, 24, 20, 0.75);
+  background: linear-gradient(155deg, #2e2a22, #1b1814 60%);
+  border: 1px solid rgba(217, 185, 104, 0.25);
   border-radius: 34px;
   box-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.06) inset,
-    0 30px 60px -30px rgba(27, 24, 20, 0.5);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 2px rgba(27, 24, 20, 0.35),
+    0 24px 48px -24px rgba(26, 42, 74, 0.45),
+    0 44px 80px -40px rgba(27, 24, 20, 0.55);
 }
 
 .landing .phone img {
@@ -700,6 +840,7 @@ hr {
 }
 
 .landing .hero-phone {
+  position: relative;
   display: flex;
   justify-content: center;
 }
@@ -709,25 +850,186 @@ hr {
   transform: rotate(1.6deg);
 }
 
-/* sections -------------------------------------------------------------------- */
-
-.landing .section {
-  padding: 54px 0 10px;
+/* zodiac arcs behind the hero phone — chart plate without an image */
+.landing .hero-phone::before,
+.landing .hero-phone::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.landing .section-title {
-  display: block;
-  margin: 8px 0 18px;
+.landing .hero-phone::before {
+  width: 520px;
+  height: 520px;
+  border: 1px dashed rgba(139, 111, 47, 0.3);
+}
+
+.landing .hero-phone::after {
+  width: 410px;
+  height: 410px;
+  border: 1px solid rgba(139, 111, 47, 0.15);
+}
+
+/* Vani spotlight — the money-maker gets the night sky ------------------------- */
+
+.landing .vani {
+  margin-top: 34px;
+  background:
+    radial-gradient(1px 1px at 11% 22%, rgba(217, 185, 104, 0.7), transparent 100%),
+    radial-gradient(1px 1px at 28% 68%, rgba(247, 242, 232, 0.5), transparent 100%),
+    radial-gradient(1.5px 1.5px at 46% 15%, rgba(217, 185, 104, 0.55), transparent 100%),
+    radial-gradient(1px 1px at 63% 55%, rgba(247, 242, 232, 0.4), transparent 100%),
+    radial-gradient(1px 1px at 78% 28%, rgba(217, 185, 104, 0.6), transparent 100%),
+    radial-gradient(1.5px 1.5px at 91% 70%, rgba(247, 242, 232, 0.45), transparent 100%),
+    radial-gradient(820px 420px at 32% 20%, rgba(217, 185, 104, 0.12), transparent 70%),
+    linear-gradient(180deg, #16233f, var(--lapis) 55%, #16233f);
+}
+
+.landing .vani-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 52px;
+  align-items: center;
+}
+
+.landing .vani-phone {
+  display: flex;
+  justify-content: center;
+}
+
+.landing .vani-phone .phone {
+  width: min(290px, 78vw);
+  transform: rotate(-1.4deg);
+  border-color: rgba(217, 185, 104, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 60px -20px rgba(217, 185, 104, 0.25);
+}
+
+.landing .vani .eyebrow {
+  color: var(--brass-3);
+}
+
+.landing .vani .section-title {
+  margin-top: 6px;
+  color: var(--paper-hi);
+}
+
+.landing .vani-copy > p {
+  max-width: 58ch;
+  color: rgba(247, 242, 232, 0.78);
+}
+
+.landing .vani-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 22px;
+  margin: 22px 0 0;
   padding: 0;
-  border: none;
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 500;
-  font-size: clamp(1.5rem, 3vw, 2.05rem);
+  list-style: none;
 }
 
-.landing .section-title::before {
-  content: none;
+.landing .vani-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0;
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(247, 242, 232, 0.16);
+}
+
+.landing .vani-points strong {
+  color: var(--paper-hi);
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 0.99rem;
+}
+
+.landing .vani-points strong::before {
+  content: "◆";
+  margin-right: 7px;
+  color: var(--brass-3);
+  font-size: 0.5em;
+  vertical-align: 0.35em;
+}
+
+.landing .vani-points span {
+  color: rgba(247, 242, 232, 0.55);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+}
+
+.landing .vani-offer {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 8px 16px;
+  color: var(--brass-3);
+  border: 1px solid rgba(217, 185, 104, 0.45);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* trust band ------------------------------------------------------------------ */
+
+.landing .trust {
+  padding-top: 46px;
+  padding-bottom: 8px;
+}
+
+.landing .trust .eyebrow {
+  margin-bottom: 14px;
+}
+
+.landing .stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+  margin: 0;
+  padding: 30px 26px 26px;
+  list-style: none;
+  background: linear-gradient(180deg, #f5ecd2, var(--brass-wash));
+  border: 1px solid var(--brass-2);
+  border-top-width: 3px;
+  border-radius: 6px;
+}
+
+.landing .stats li {
+  margin: 0;
+}
+
+.landing .stats h3 {
+  margin: 0 0 6px;
+  font-size: 1.176rem;
+  font-weight: 600;
+  color: var(--brass);
+}
+
+.landing .stats h3.stat-jade {
+  color: var(--jade);
+}
+
+.landing .stats p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* tint bands (features, plans) ------------------------------------------------ */
+
+.landing .band.tint {
+  margin-top: 54px;
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 /* features -------------------------------------------------------------------- */
@@ -749,38 +1051,59 @@ hr {
 
 .landing .features h3 {
   margin: 0 0 6px;
-  font-size: 1.06rem;
+  font-size: 1.176rem;
+  font-weight: 600;
 }
 
 .landing .features p {
   margin: 0;
   color: var(--ink-2);
-  font-size: 0.97rem;
-  line-height: 1.58;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 /* gallery --------------------------------------------------------------------- */
 
 .landing .gallery {
   display: flex;
-  gap: 22px;
+  gap: 26px;
   margin-top: 26px;
-  padding: 6px 4px 22px;
+  padding: 26px 20px 22px;
   overflow-x: auto;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
+  background: linear-gradient(180deg, var(--paper-3), var(--paper-2));
+  border: 1px solid var(--rule);
+  border-radius: 8px;
 }
 
-.landing .gallery .phone {
+/* gallery frames carry the bezel on the img so captions sit on parchment */
+.landing .gallery figure.phone {
   flex: 0 0 auto;
   width: 236px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   scroll-snap-align: center;
-  padding: 8px;
-  border-radius: 28px;
 }
 
-.landing .gallery .phone img {
-  border-radius: 20px;
+.landing .gallery figure.phone img {
+  border: 6px solid #23201a;
+  border-radius: 24px;
+  outline: 1px solid rgba(217, 185, 104, 0.3);
+  box-shadow: 0 18px 36px -20px rgba(27, 24, 20, 0.5);
+}
+
+.landing .gallery figcaption {
+  margin-top: 10px;
+  color: var(--ink-3);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  text-align: center;
 }
 
 .landing .gallery:focus-visible {
@@ -788,7 +1111,43 @@ hr {
   outline-offset: 4px;
 }
 
-/* depth chips ----------------------------------------------------------------- */
+/* depth — the connoisseur's plate --------------------------------------------- */
+
+.landing .depth {
+  position: relative;
+  margin-top: 54px;
+  padding: 40px 44px 44px;
+  background: var(--paper-hi);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+
+.landing .depth::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.landing .depth::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 0 / 18px 1px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 0 / 1px 18px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 0 / 18px 1px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 0 / 1px 18px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 100% / 18px 1px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 100% / 1px 18px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 100% / 18px 1px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 100% / 1px 18px;
+  background-repeat: no-repeat;
+}
 
 .landing .depth-lede {
   max-width: 62ch;
@@ -813,24 +1172,231 @@ hr {
   color: var(--ink-2);
   font-family: var(--sans);
   font-size: 0.82rem;
+  transition: background 0.12s ease, border-color 0.12s ease;
 }
 
-/* languages band (dark, mirrors the Vani surface) ------------------------------ */
+.landing .chips li:hover {
+  background: var(--brass-wash);
+  border-color: var(--brass-2);
+}
+
+/* ornament rule — manuscript divider ------------------------------------------ */
+
+.landing .orn {
+  position: relative;
+  height: 1px;
+  margin-top: 54px;
+  margin-bottom: 0;
+  border: none;
+  background: linear-gradient(90deg, transparent, var(--rule-2) 15%, var(--rule-2) 85%, transparent);
+}
+
+.landing .orn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--paper);
+  border: 1px solid var(--brass-2);
+}
+
+.landing .orn-vermilion::before {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+}
+
+/* plans ----------------------------------------------------------------------- */
+
+.landing .plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.landing .plan {
+  padding: 22px 24px 24px;
+  background: var(--paper-hi);
+  border: 1px solid var(--rule-2);
+  border-radius: 6px;
+  box-shadow: 0 12px 28px -22px rgba(27, 24, 20, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.landing .plan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px -22px rgba(27, 24, 20, 0.45);
+}
+
+.landing .plan-featured {
+  position: relative;
+  background: linear-gradient(180deg, var(--paper-hi), var(--brass-wash) 45%);
+  border-color: var(--brass-2);
+  border-top: 3px solid var(--vermilion);
+  box-shadow: 0 22px 44px -30px rgba(139, 111, 47, 0.55);
+}
+
+.landing .plan-featured::after {
+  content: "Most chosen";
+  position: absolute;
+  top: -11px;
+  right: 16px;
+  padding: 3px 10px;
+  background: var(--vermilion);
+  color: var(--paper-hi);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.landing .plan h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 560;
+  font-size: 1.5rem;
+}
+
+.landing .plan-featured h3 {
+  color: var(--brass);
+}
+
+.landing .plan-tag {
+  margin: 2px 0 12px;
+  color: var(--ink-3);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.landing .plan-price {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.06rem;
+  color: var(--ink);
+}
+
+.landing .plan-price span {
+  display: block;
+  margin-top: 1px;
+  color: var(--ink-3);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 0.72rem;
+}
+
+.landing .plan ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.landing .plan li {
+  margin: 0.35rem 0;
+  font-size: 0.94rem;
+  color: var(--ink-2);
+}
+
+.landing .plan li::marker {
+  color: var(--jade);
+}
+
+.landing .plans-cta {
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.landing .plans-note {
+  max-width: 62ch;
+  margin: 18px auto 0;
+  color: var(--ink-3);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* FAQ ------------------------------------------------------------------------- */
+
+.landing .faq {
+  max-width: 760px;
+}
+
+.landing .faq details {
+  border-top: 1px solid var(--rule-2);
+}
+
+.landing .faq details:last-of-type {
+  border-bottom: 1px solid var(--rule-2);
+}
+
+.landing .faq summary {
+  padding: 16px 30px 16px 2px;
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.06rem;
+  color: var(--ink);
+  transition: color 0.12s ease;
+}
+
+.landing .faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.landing .faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--brass);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.landing .faq details[open] summary {
+  color: var(--brass);
+}
+
+.landing .faq details[open] summary::after {
+  content: "−";
+}
+
+.landing .faq details p {
+  margin: 0 0 18px;
+  padding-right: 24px;
+  color: var(--ink-2);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+/* languages band (dark, gilded edges) ----------------------------------------- */
 
 .landing .langs {
-  width: 100%;
-  max-width: none;
-  margin-top: 44px;
-  padding: 58px 0 62px;
+  margin-top: 54px;
   background:
+    radial-gradient(1px 1px at 14% 30%, rgba(217, 185, 104, 0.6), transparent 100%),
+    radial-gradient(1px 1px at 34% 72%, rgba(247, 242, 232, 0.45), transparent 100%),
+    radial-gradient(1.5px 1.5px at 57% 20%, rgba(217, 185, 104, 0.5), transparent 100%),
+    radial-gradient(1px 1px at 82% 60%, rgba(247, 242, 232, 0.4), transparent 100%),
     radial-gradient(900px 380px at 50% -140px, rgba(217, 185, 104, 0.14), transparent 70%),
     var(--lapis);
-}
-
-.landing .langs > * {
-  width: min(1060px, calc(100% - 40px));
-  margin-left: auto;
-  margin-right: auto;
+  border-top: 1px solid rgba(217, 185, 104, 0.45);
+  border-bottom: 1px solid rgba(217, 185, 104, 0.45);
+  box-shadow: inset 0 1px 0 rgba(217, 185, 104, 0.18), inset 0 -1px 0 rgba(217, 185, 104, 0.18);
 }
 
 .landing .langs .eyebrow {
@@ -865,10 +1431,15 @@ hr {
   border-radius: 4px;
 }
 
+/* real Indic serifs — Source Serif 4 has no Indic coverage, and system
+   fallbacks break the "written by hand" claim with mismatched sans glyphs */
 .landing .lang-native {
   color: var(--paper-hi);
-  font-family: var(--serif);
-  font-size: 1.12rem;
+  font-family: "Noto Serif Devanagari", "Noto Serif Telugu", "Noto Serif Tamil",
+    "Noto Serif Kannada", "Noto Serif Malayalam", "Noto Serif Bengali",
+    "Noto Serif Gujarati", var(--serif);
+  font-size: 1.18rem;
+  font-weight: 500;
 }
 
 .landing .lang-name {
@@ -879,72 +1450,29 @@ hr {
   text-transform: uppercase;
 }
 
-/* plans ----------------------------------------------------------------------- */
-
-.landing .plan-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 26px;
-}
-
-.landing .plan {
-  padding: 22px 24px 24px;
-  background: var(--paper-hi);
-  border: 1px solid var(--rule-2);
-  border-radius: 6px;
-}
-
-.landing .plan-featured {
-  background: var(--brass-wash);
-  border-color: var(--brass-2);
-  box-shadow: 0 22px 44px -30px rgba(139, 111, 47, 0.55);
-}
-
-.landing .plan h3 {
-  margin: 0;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.35rem;
-}
-
-.landing .plan-tag {
-  margin: 2px 0 12px;
-  color: var(--ink-3);
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.landing .plan ul {
-  margin: 0;
-  padding-left: 1.15rem;
-}
-
-.landing .plan li {
-  margin: 0.35rem 0;
-  font-size: 0.95rem;
-  color: var(--ink-2);
-}
-
-.landing .plans-note {
-  max-width: 74ch;
-  margin-top: 20px;
-  color: var(--ink-3);
-  font-family: var(--sans);
-  font-size: 0.84rem;
-  line-height: 1.6;
-}
-
-/* quiet privacy section + closing --------------------------------------------- */
+/* final close ------------------------------------------------------------------ */
 
 .landing .quiet {
-  padding-bottom: 26px;
+  margin-top: 54px;
+  padding: 36px 40px 40px;
+  background: var(--lapis-wash);
+  border: 1px solid #c9cfdd;
+  border-left: 3px solid var(--lapis);
+  border-radius: 4px;
+}
+
+.landing .quiet .hero-note {
+  margin-top: 18px;
+}
+
+/* sections (light, unbanded) --------------------------------------------------- */
+
+.landing .section {
+  padding: 54px 0 10px;
 }
 
 .landing .attribution {
-  margin-top: 40px;
+  margin-top: 44px;
 }
 
 .landing .disclaimer-line {
@@ -953,60 +1481,35 @@ hr {
   letter-spacing: 0;
 }
 
-/* footer ----------------------------------------------------------------------- */
+/* footer — dark close, bookends the lapis bands -------------------------------- */
 
 .landing .site-footer {
   margin-top: 44px;
-  padding: 40px 0 48px;
-  background: var(--paper-2);
-  border-top: 1px solid var(--rule);
-  color: var(--ink-3);
-  font-family: var(--sans);
-  font-size: 0.88rem;
-  text-align: left;
+  background: #23201a;
+  border-top: 2px solid var(--brass-2);
+  color: rgba(247, 242, 232, 0.55);
 }
 
-.landing .footer-cols {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 26px;
+.landing .footer-cols,
+.landing .footer-line {
+  width: min(1060px, calc(100% - 40px));
 }
 
 .landing .footer-head {
-  margin: 0 0 10px;
-  color: var(--ink-2);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.landing .site-footer ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.landing .site-footer li {
-  margin: 0.45rem 0;
+  color: var(--brass-3);
 }
 
 .landing .site-footer a {
-  color: var(--ink-2);
-  font-weight: 400;
-  text-decoration: none;
+  color: rgba(247, 242, 232, 0.78);
 }
 
 .landing .site-footer a:hover {
-  color: var(--brass);
-  text-decoration: underline;
+  color: var(--brass-3);
 }
 
 .landing .footer-line {
-  margin-top: 30px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-  font-size: 0.8rem;
+  border-top-color: rgba(247, 242, 232, 0.14);
+  color: rgba(247, 242, 232, 0.45);
 }
 
 /* landing responsive ----------------------------------------------------------- */
@@ -1016,14 +1519,35 @@ hr {
     grid-template-columns: 1fr;
     gap: 36px;
     padding-top: 40px;
-    text-align: left;
+  }
+
+  .landing .hero h1 {
+    max-width: none;
   }
 
   .landing .hero-phone .phone {
     transform: none;
   }
 
+  .landing .vani-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* copy first on small screens — the pitch shouldn't hide below the phone */
+  .landing .vani-phone {
+    order: 2;
+  }
+
+  .landing .vani-phone .phone {
+    transform: none;
+  }
+
   .landing .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .landing .stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1034,13 +1558,28 @@ hr {
 
 @media (max-width: 560px) {
   .landing .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 10px;
+  }
+
+  .landing .nav-links {
+    gap: 14px;
+    font-size: 0.8rem;
   }
 
   .landing .features {
     grid-template-columns: 1fr;
+  }
+
+  .landing .stats {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 20px 20px;
+  }
+
+  .landing .stats p {
+    font-size: 0.86rem;
   }
 
   .landing .store-buttons {
@@ -1049,6 +1588,14 @@ hr {
 
   .landing .store-btn {
     flex: 1 1 150px;
+  }
+
+  .landing .vani-points {
+    grid-template-columns: 1fr;
+  }
+
+  .landing .depth {
+    padding: 28px 22px 30px;
   }
 
   .landing .footer-cols {
@@ -1158,128 +1705,3 @@ hr {
   }
 }
 
-/* =============================================================================
- * Landing: Vani spotlight + trust band (appended with the same .landing scope).
- * ============================================================================= */
-
-.landing .vani {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 52px;
-  align-items: center;
-  margin-top: 26px;
-  padding: 44px 0 34px;
-}
-
-.landing .vani-phone {
-  display: flex;
-  justify-content: center;
-}
-
-.landing .vani-phone .phone {
-  width: min(290px, 78vw);
-  transform: rotate(-1.4deg);
-}
-
-.landing .vani-copy .section-title {
-  margin-top: 6px;
-}
-
-.landing .vani-copy > p {
-  max-width: 58ch;
-  color: var(--ink-2);
-}
-
-.landing .vani-points {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 22px;
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.landing .vani-points li {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  margin: 0;
-  padding: 10px 0 0;
-  border-top: 1px solid var(--rule-2);
-}
-
-.landing .vani-points strong {
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: 0.99rem;
-}
-
-.landing .vani-points span {
-  color: var(--ink-3);
-  font-family: var(--sans);
-  font-size: 0.82rem;
-}
-
-/* trust band ------------------------------------------------------------------ */
-
-.landing .stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 26px;
-  margin: 0;
-  padding: 30px 26px 26px;
-  list-style: none;
-  background: var(--brass-wash);
-  border: 1px solid var(--rule-2);
-  border-radius: 6px;
-}
-
-.landing .stats li {
-  margin: 0;
-}
-
-.landing .stats h3 {
-  margin: 0 0 6px;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--brass);
-}
-
-.landing .stats p {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: 0.9rem;
-  line-height: 1.55;
-}
-
-@media (max-width: 900px) {
-  .landing .vani {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  /* copy first on small screens — the pitch shouldn't hide below the phone */
-  .landing .vani-phone {
-    order: 2;
-  }
-
-  .landing .vani-phone .phone {
-    transform: none;
-  }
-
-  .landing .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .landing .stats {
-    grid-template-columns: 1fr;
-    padding: 24px 20px 20px;
-  }
-
-  .landing .vani-points {
-    grid-template-columns: 1fr;
-  }
-}

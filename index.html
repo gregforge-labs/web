@@ -17,7 +17,17 @@
 <meta property="og:url" content="https://gregforgelabs.com/">
 <meta property="og:image" content="https://gregforgelabs.com/assets/app-icon.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/style.css?v=20260722">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..640&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=Inter:wght@400..700&family=JetBrains+Mono:wght@400..500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500&text=%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%A0%E0%A5%80&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@500&text=%E0%B0%A4%E0%B1%86%E0%B0%B2%E0%B1%81%E0%B0%97%E0%B1%81&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@500&text=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Kannada:wght@500&text=%E0%B2%95%E0%B2%A8%E0%B3%8D%E0%B2%A8%E0%B2%A1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@500&text=%E0%B4%AE%E0%B4%B2%E0%B4%AF%E0%B4%BE%E0%B4%B3%E0%B4%82&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500&text=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@500&text=%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AB%80&display=swap">
+<link rel="stylesheet" href="/style.css?v=20260723">
 </head>
 <body class="landing">
 
@@ -31,9 +41,9 @@
   </a>
   <nav class="nav-links">
     <a href="#inside">Inside the app</a>
-    <a href="#languages">Languages</a>
     <a href="#plans">Plans</a>
-    <a href="/support.html">Support</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#get">Get the app</a>
   </nav>
 </header>
 
@@ -42,7 +52,7 @@
   <!-- ======================= hero ======================= -->
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">Vedic astrology · Jyotiṣa</p>
+      <p class="eyebrow eyebrow-tilak">Vedic astrology · Jyotiṣa</p>
       <h1>People have asked the sky these questions for thousands of&nbsp;years.</h1>
       <p class="lede">Should I take the job? Is this a good week to begin? Are we right for each other? Vedic astrology answers from one thing — your own birth chart. Jyotish Vani puts that whole tradition in your pocket, in your language, in words anyone can understand.</p>
       <div class="store-buttons">
@@ -55,7 +65,8 @@
           <span class="store-btn-big">Google Play</span>
         </a>
       </div>
-      <p class="hero-note">Free to start — casting your kundli takes two minutes.</p>
+      <p class="hero-note">Casting your kundli is <strong>free</strong> and takes two minutes. Your first three Vani questions are <strong>free</strong> too.</p>
+      <p class="fact-strip">22 chapters · 9 languages · 14 countries · Swiss Ephemeris inside</p>
     </div>
     <div class="hero-phone">
       <div class="phone">
@@ -64,78 +75,83 @@
     </div>
   </section>
 
-  <!-- ======================= Vani spotlight ======================= -->
-  <section class="section vani">
-    <div class="vani-phone">
-      <div class="phone"><img loading="lazy" src="/assets/screens/04-vani-chat.jpg" width="640" height="1385" alt="Ask Vani — a chat answering from your own birth chart"></div>
-    </div>
-    <div class="vani-copy">
-      <p class="eyebrow">Meet Vani</p>
-      <h2 class="section-title">Ask anything. Your chart&nbsp;answers.</h2>
-      <p>Which dasha am I in? Is this a good month to change jobs? When does this hard phase ease? Vani has already read your kundli — every planet, every period — before you ask. It answers in seconds, in plain words, in your language.</p>
-      <p>And it doesn't tell you what you want to hear. Every answer names the classical rule it stands on, so you can see exactly where it comes from. If your chart says wait, Vani says wait.</p>
-      <ul class="vani-points">
-        <li><strong>Knows your whole chart</strong><span>Not generic answers — yours</span></li>
-        <li><strong>Cites its classical basis</strong><span>See the rule behind every reading</span></li>
-        <li><strong>Speaks nine languages</strong><span>Ask in the language you think in</span></li>
-        <li><strong>No appointments, no per-minute fees</strong><span>Your jyotishi is already in your pocket</span></li>
-      </ul>
-      <p class="hero-note">Your first three questions are free.</p>
+  <!-- ======================= Vani spotlight (dark band) ======================= -->
+  <section class="band vani">
+    <div class="vani-inner">
+      <div class="vani-phone">
+        <div class="phone"><img loading="lazy" src="/assets/screens/04-vani-chat.jpg" width="640" height="1385" alt="Ask Vani — a chat answering from your own birth chart"></div>
+      </div>
+      <div class="vani-copy">
+        <p class="eyebrow eyebrow-tilak">Meet Vani</p>
+        <h2 class="section-title">Ask anything. Your chart&nbsp;answers.</h2>
+        <p>Which dasha am I in? Is this a good month to change jobs? When does this hard phase ease? Vani has already read your kundli — every planet, every period — before you ask. It answers in seconds, in plain words, in your language.</p>
+        <p>And it doesn't tell you what you want to hear. Every answer names the classical rule it stands on, so you can see exactly where it comes from. If your chart says wait, Vani says wait.</p>
+        <ul class="vani-points">
+          <li><strong>Knows your whole chart</strong><span>Not generic answers — yours</span></li>
+          <li><strong>Cites its classical basis</strong><span>See the rule behind every reading</span></li>
+          <li><strong>Speaks nine languages</strong><span>Ask in the language you think in</span></li>
+          <li><strong>No appointments, no per-minute fees</strong><span>Your jyotishi is already in your pocket</span></li>
+        </ul>
+        <p class="vani-offer">Your first three questions are free.</p>
+      </div>
     </div>
   </section>
 
   <!-- ======================= trust band ======================= -->
-  <section class="section">
+  <section class="section trust">
+    <p class="eyebrow">Why you can trust it</p>
     <ul class="stats">
       <li>
         <h3>Precise to the arc-second</h3>
-        <p>Planetary positions come from the Swiss Ephemeris — the professional standard behind serious astrology software worldwide. Your chart is computed, never approximated.</p>
+        <p>Planetary positions come from the Swiss Ephemeris — Professional Edition, commercially licensed — the standard behind serious astrology software worldwide. Computed, never approximated.</p>
       </li>
       <li>
         <h3>Thousands of years of tradition</h3>
         <p>Every reading follows the classical texts — from Parashara and Jaimini to the modern KP system. The tradition sets the rules; the app just makes them readable.</p>
       </li>
       <li>
-        <h3>Written by people, with care</h3>
-        <p>Every line in all nine languages is written and reviewed by hand — never machine-translated. It reads the way your family actually speaks.</p>
+        <h3 class="stat-jade">Honest by design</h3>
+        <p>No doom, no fear, no upsells dressed up as remedies. The chart says what it says — and that's what you'll read.</p>
       </li>
       <li>
-        <h3>Honest by design</h3>
-        <p>No doom, no fear, no upsells dressed up as remedies. The chart says what it says — and that's what you'll read.</p>
+        <h3>Private by design</h3>
+        <p>Sign in with just your phone number — no email, no password. One switch controls all notifications. Delete everything, any time.</p>
       </li>
     </ul>
   </section>
 
-  <!-- ======================= features ======================= -->
-  <section id="inside" class="section">
-    <p class="eyebrow">Inside the app</p>
-    <h2 class="section-title">Not a wall of tables. A book about&nbsp;you.</h2>
-    <ul class="features">
-      <li>
-        <h3>Your day, from your chart</h3>
-        <p>Open the app each morning to a short reading written from your own chart — what the day favors, what to hold back on, and which hours matter. Week and month views look further ahead.</p>
-      </li>
-      <li>
-        <h3>A kundli of 22 chapters</h3>
-        <p>Your birth chart opens as a book about you — who you are, what you carry, and where the years ahead point. Twenty-two chapters in plain language, as deep as you want to go.</p>
-      </li>
-      <li>
-        <h3>Panchang for your city</h3>
-        <p>The Hindu almanac, computed for where you actually live — Hyderabad or Houston. Good hours, festival days, fasting days, and the windows to avoid.</p>
-      </li>
-      <li>
-        <h3>Is now a good time?</h3>
-        <p>A simple verdict for this hour, updated live. Planning something bigger — a ceremony, a journey, a signing? The muhurat finder scans the weeks ahead for the cleanest window.</p>
-      </li>
-      <li>
-        <h3>Matching, honestly told</h3>
-        <p>Checking a match for marriage? Get the full picture — all 36 points, the strengths, the frictions, and what they actually mean. A verdict your family can talk about, not just a number.</p>
-      </li>
-      <li>
-        <h3>The next five years</h3>
-        <p>Career, money, home, relationships — a five-year forecast mapped from your chart's own timing, told in plain guidance rather than jargon.</p>
-      </li>
-    </ul>
+  <!-- ======================= features (tint band) ======================= -->
+  <section id="inside" class="band tint">
+    <div class="band-inner">
+      <p class="eyebrow">Inside the app</p>
+      <h2 class="section-title">Not a wall of tables. A book about&nbsp;you.</h2>
+      <ul class="features">
+        <li>
+          <h3>Your day, from your chart</h3>
+          <p>Open the app each morning to a short reading written from your own chart — what the day favors, what to hold back on, and which hours matter. Week and month views look further ahead.</p>
+        </li>
+        <li>
+          <h3>A kundli of 22 chapters</h3>
+          <p>Your birth chart opens as a book about you — who you are, what you carry, and where the years ahead point. Twenty-two chapters in plain language, as deep as you want to go.</p>
+        </li>
+        <li>
+          <h3>Panchang for your city</h3>
+          <p>The Hindu almanac, computed for where you actually live — Hyderabad or Houston. Good hours, festival days, fasting days, and the windows to avoid.</p>
+        </li>
+        <li>
+          <h3>Is now a good time?</h3>
+          <p>A simple verdict for this hour, updated live. Planning something bigger — a ceremony, a journey, a signing? The muhurat finder scans the weeks ahead for the cleanest window.</p>
+        </li>
+        <li>
+          <h3>Matching, honestly told</h3>
+          <p>Checking a match for marriage? Get the full picture — all 36 points, the strengths, the frictions, and what they actually mean. A verdict your family can talk about, not just a number.</p>
+        </li>
+        <li>
+          <h3>The next five years</h3>
+          <p>Career, money, home, relationships — a five-year forecast mapped from your chart's own timing, told in plain guidance rather than jargon.</p>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <!-- ======================= gallery ======================= -->
@@ -143,17 +159,17 @@
     <p class="eyebrow">A quiet, composed design</p>
     <h2 class="section-title">Made to be read, not scrolled&nbsp;past.</h2>
     <div class="gallery" tabindex="0">
-      <figure class="phone"><img loading="lazy" src="/assets/screens/02-kundli-toc.jpg" width="640" height="1385" alt="The chapters of your kundli — table of contents"></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/05-panchang-today.jpg" width="640" height="1385" alt="Panchang for today, computed for your city"></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/08-this-hour.jpg" width="640" height="1385" alt="This Hour — a live verdict on the quality of the current hour"></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/03-match.jpg" width="640" height="1385" alt="Kundli matching with all 36 gunas"></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/06-chart-plate.jpg" width="640" height="1385" alt="Birth chart plate in North and South Indian styles"></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/09-muhurta.jpg" width="640" height="1385" alt="Muhurat finder scanning days ahead for good windows"></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/12-forecast.jpg" width="640" height="1385" alt="Five-year forecast by life area"></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/02-kundli-toc.jpg" width="640" height="1385" alt="The chapters of your kundli — table of contents"><figcaption>Your kundli's 22 chapters</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/05-panchang-today.jpg" width="640" height="1385" alt="Panchang for today, computed for your city"><figcaption>Panchang for your city</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/08-this-hour.jpg" width="640" height="1385" alt="This Hour — a live verdict on the quality of the current hour"><figcaption>This hour, verdict live</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/03-match.jpg" width="640" height="1385" alt="Kundli matching with all 36 gunas"><figcaption>All 36 points of matching</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/06-chart-plate.jpg" width="640" height="1385" alt="Birth chart plate in North and South Indian styles"><figcaption>North &amp; South Indian plates</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/09-muhurta.jpg" width="640" height="1385" alt="Muhurat finder scanning days ahead for good windows"><figcaption>The muhurat finder</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="/assets/screens/12-forecast.jpg" width="640" height="1385" alt="Five-year forecast by life area"><figcaption>Your next five years</figcaption></figure>
     </div>
   </section>
 
-  <!-- ======================= depth ======================= -->
+  <!-- ======================= depth (framed plate) ======================= -->
   <section class="section depth">
     <p class="eyebrow">For those who grew up with jyotish</p>
     <h2 class="section-title">It's all here.</h2>
@@ -163,8 +179,89 @@
     </ul>
   </section>
 
-  <!-- ======================= languages ======================= -->
-  <section id="languages" class="section langs">
+  <hr class="orn orn-vermilion">
+
+  <!-- ======================= plans (tint band) ======================= -->
+  <section id="plans" class="band tint">
+    <div class="band-inner">
+      <p class="eyebrow">Plans</p>
+      <h2 class="section-title">Free to start. Simple to grow.</h2>
+      <div class="plan-grid">
+        <div class="plan">
+          <h3>Free</h3>
+          <p class="plan-tag">Cast your kundli, keep it forever</p>
+          <ul>
+            <li>Your full kundli and daily readings</li>
+            <li>Panchang, muhurat &amp; matching</li>
+            <li>Deeper chapters unlock with a short ad</li>
+            <li>Three Vani questions to start</li>
+          </ul>
+        </div>
+        <div class="plan plan-featured">
+          <h3>Pro</h3>
+          <p class="plan-tag">For a daily practice</p>
+          <p class="plan-price">From ₹399/month<span>India pricing — adjusted per market</span></p>
+          <ul>
+            <li>45 Vani questions a month</li>
+            <li>No ads anywhere</li>
+            <li>Every chapter open, including KP, Jaimini, Tajika &amp; Vastu</li>
+            <li>Charts for 5 family members</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Max</h3>
+          <p class="plan-tag">For the whole family</p>
+          <p class="plan-price">From ₹799/month<span>India pricing — adjusted per market</span></p>
+          <ul>
+            <li>120 Vani questions a month</li>
+            <li>No ads anywhere</li>
+            <li>Every chapter open</li>
+            <li>Charts for 10 family members</li>
+          </ul>
+        </div>
+      </div>
+      <div class="store-buttons plans-cta">
+        <a class="store-btn" href="https://apps.apple.com/app/id6772030551">
+          <span class="store-btn-small">Download free on the</span>
+          <span class="store-btn-big">App Store</span>
+        </a>
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.jyotishvani.app">
+          <span class="store-btn-small">Download free on</span>
+          <span class="store-btn-big">Google Play</span>
+        </a>
+      </div>
+      <p class="plans-note">Monthly subscriptions, cancel anytime in your store settings. Subscribers can top up with one-time Vani credit packs. Details in the <a href="/refund.html">Refund &amp; Subscription Terms</a>.</p>
+    </div>
+  </section>
+
+  <!-- ======================= FAQ ======================= -->
+  <section id="faq" class="section faq">
+    <p class="eyebrow">Questions</p>
+    <h2 class="section-title">Asked before you ask.</h2>
+    <details>
+      <summary>How accurate are the calculations?</summary>
+      <p>Planetary positions are computed by the Swiss Ephemeris — the professional standard used across serious astrology software — under a commercial Professional Edition license. Charts, dashas, and panchang are calculated for your exact birth time and place, not looked up in tables.</p>
+    </details>
+    <details>
+      <summary>How is Vani different from consulting a jyotishi?</summary>
+      <p>Vani answers from your own chart and running dasha, names the classical rule behind each answer, and is available whenever a question occurs to you — no appointment, no per-minute charges. It is a companion for reflection, not a replacement for human judgment on big decisions.</p>
+    </details>
+    <details>
+      <summary>Is my birth data private?</summary>
+      <p>Yes. You sign in with just a phone number — no email, no password. Your birth details are used to compute your chart and readings, are never sold, and you can delete your account and every trace of your data at any time, from inside the app or from this site. Details in the <a href="/privacy.html">Privacy Policy</a>.</p>
+    </details>
+    <details>
+      <summary>What does it cost?</summary>
+      <p>Casting your kundli, daily readings, panchang, and matching are free. Two optional monthly plans — Pro (from ₹399/month) and Max (from ₹799/month), priced per market — expand your Vani allowance, remove ads, and open every chapter. Cancel anytime in your store settings.</p>
+    </details>
+    <details>
+      <summary>Which languages and countries?</summary>
+      <p>Nine languages, each written by hand: English, Hindi, Telugu, Tamil, Kannada, Malayalam, Bengali, Marathi, and Gujarati. Available in 14 countries: India, Nepal, Sri Lanka, Malaysia, Mauritius, New Zealand, the United States, the United Kingdom, Canada, Australia, the UAE, Saudi Arabia, Qatar, and Singapore.</p>
+    </details>
+  </section>
+
+  <!-- ======================= languages (dark band) ======================= -->
+  <section id="languages" class="band langs">
     <p class="eyebrow">In your language</p>
     <h2 class="section-title">Written, never machine-translated.</h2>
     <p class="depth-lede">Your daily reading and rashifal read the way your family actually speaks — in nine languages:</p>
@@ -181,54 +278,22 @@
     </ul>
   </section>
 
-  <!-- ======================= plans ======================= -->
-  <section id="plans" class="section plans">
-    <p class="eyebrow">Plans</p>
-    <h2 class="section-title">Free to start. Simple to grow.</h2>
-    <div class="plan-grid">
-      <div class="plan">
-        <h3>Free</h3>
-        <p class="plan-tag">Cast your kundli, keep it forever</p>
-        <ul>
-          <li>Your full kundli and daily readings</li>
-          <li>Panchang, muhurat &amp; matching</li>
-          <li>Deeper chapters unlock with a short ad</li>
-          <li>Three Vani questions to start</li>
-        </ul>
-      </div>
-      <div class="plan plan-featured">
-        <h3>Pro</h3>
-        <p class="plan-tag">For a daily practice</p>
-        <ul>
-          <li>45 Vani questions a month</li>
-          <li>No ads anywhere</li>
-          <li>Every chapter open, including KP, Jaimini, Tajika &amp; Vastu</li>
-          <li>Charts for 5 family members</li>
-        </ul>
-      </div>
-      <div class="plan">
-        <h3>Max</h3>
-        <p class="plan-tag">For the whole family</p>
-        <ul>
-          <li>120 Vani questions a month</li>
-          <li>No ads anywhere</li>
-          <li>Every chapter open</li>
-          <li>Charts for 10 family members</li>
-        </ul>
-      </div>
+  <!-- ======================= final close ======================= -->
+  <section id="get" class="section quiet">
+    <p class="eyebrow eyebrow-tilak">Begin</p>
+    <h2 class="section-title">See what your chart has been waiting to tell&nbsp;you.</h2>
+    <p class="depth-lede">Cast your kundli free in two minutes. Read your day, meet Vani — your first three questions are free — and go as deep as you want from there.</p>
+    <div class="store-buttons">
+      <a class="store-btn" href="https://apps.apple.com/app/id6772030551">
+        <span class="store-btn-small">Download on the</span>
+        <span class="store-btn-big">App Store</span>
+      </a>
+      <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.jyotishvani.app">
+        <span class="store-btn-small">Get it on</span>
+        <span class="store-btn-big">Google Play</span>
+      </a>
     </div>
-    <p class="plans-note">Monthly subscriptions, priced for your market, cancel anytime in your store settings. Subscribers can top up with one-time Vani credit packs. Details in the <a href="/refund.html">Refund &amp; Subscription Terms</a>. Available in 14 countries: India, Nepal, Sri Lanka, Malaysia, Mauritius, New Zealand, the United States, the United Kingdom, Canada, Australia, the UAE, Saudi Arabia, Qatar, and Singapore.</p>
-  </section>
-
-  <!-- ======================= privacy ======================= -->
-  <section class="section quiet">
-    <p class="eyebrow">Private and simple</p>
-    <h2 class="section-title">Your chart is yours.</h2>
-    <p class="depth-lede">Sign in with just your phone number — no email, no password. One switch controls all notifications. Delete your account and every trace of your data, any time, from inside the app or <a href="/delete-account.html">from this site</a>. The details are in our <a href="/privacy.html">Privacy Policy</a>.</p>
-    <div class="actions">
-      <a class="button" href="https://apps.apple.com/app/id6772030551">Download for iPhone</a>
-      <a class="button secondary" href="https://play.google.com/store/apps/details?id=com.jyotishvani.app">Get it on Google Play</a>
-    </div>
+    <p class="hero-note">Private by design — phone-number sign-in, delete everything anytime. <a href="/privacy.html">Privacy Policy</a> · <a href="/delete-account.html">Account deletion</a></p>
   </section>
 
   <div class="attribution">
