@@ -107,7 +107,7 @@ main {
   padding: 40px 44px 44px;
   background: var(--paper-hi);
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 14px;
   box-shadow:
     0 1px 0 rgba(27, 24, 20, 0.04),
     0 24px 48px -32px rgba(27, 24, 20, 0.18);
@@ -121,7 +121,7 @@ main::before {
   bottom: 14px;
   left: 14px;
   border: 1px solid var(--rule);
-  border-radius: 2px;
+  border-radius: 8px;
   pointer-events: none;
   opacity: 0.55;
 }
@@ -344,7 +344,7 @@ hr {
   background: var(--brass-wash);
   border: 1px solid var(--rule-2);
   border-left: 3px solid var(--brass);
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
 .product-strip p {
@@ -355,16 +355,9 @@ hr {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0;
+  gap: 12px;
   padding-left: 0;
   list-style: none;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background:
-    linear-gradient(var(--rule), var(--rule)) 0 0 / 1px 100% no-repeat,
-    linear-gradient(var(--rule), var(--rule)) 0 100% / 100% 1px no-repeat,
-    var(--paper-hi);
-  overflow: hidden;
 }
 
 .card {
@@ -373,13 +366,14 @@ hr {
   margin: 0;
   padding: 18px 22px;
   background: var(--paper-hi);
-  border-right: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  transition: background 0.12s ease;
+  border: 1px solid var(--rule-2);
+  border-radius: 16px;
+  transition: background 0.12s ease, border-color 0.12s ease;
 }
 
 .card:hover {
   background: rgba(241, 230, 197, 0.42);
+  border-color: var(--brass-2);
 }
 
 .card > div {
@@ -423,7 +417,7 @@ hr {
   background: var(--lapis-wash);
   border: 1px solid var(--rule);
   border-left: 3px solid var(--lapis);
-  border-radius: 3px;
+  border-radius: 12px;
   color: var(--ink-2);
 }
 
@@ -455,11 +449,11 @@ hr {
   align-items: center;
   justify-content: center;
   min-height: 42px;
-  padding: 0.6rem 1.1rem;
+  padding: 0.6rem 1.35rem;
   color: var(--paper-hi);
   background: var(--ink);
   border: 1px solid var(--ink);
-  border-radius: 3px;
+  border-radius: 999px;
   font-family: var(--sans);
   font-size: 0.92rem;
   font-weight: 500;
@@ -492,7 +486,7 @@ hr {
   padding: 14px 18px;
   background: var(--paper-2);
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  border-radius: 14px;
   color: var(--ink-3);
   font-family: var(--sans);
   font-size: 0.84rem;
@@ -828,7 +822,7 @@ hr {
 
 .landing .store-badges a {
   display: inline-flex;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: transform 0.12s ease;
 }
 
@@ -849,7 +843,7 @@ hr {
   padding: 8px 14px 8px 8px;
   background: var(--paper-hi);
   border: 1px solid var(--rule-2);
-  border-radius: 8px;
+  border-radius: 16px;
   color: var(--ink-3);
   font-family: var(--sans);
   font-size: 0.72rem;
@@ -1055,7 +1049,7 @@ hr {
   background: linear-gradient(180deg, #f5ecd2, var(--brass-wash));
   border: 1px solid var(--brass-2);
   border-top-width: 3px;
-  border-radius: 6px;
+  border-radius: 20px;
 }
 
 .landing .stats li {
@@ -1131,7 +1125,7 @@ hr {
   -webkit-overflow-scrolling: touch;
   background: linear-gradient(180deg, var(--paper-3), var(--paper-2));
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 20px;
 }
 
 /* gallery frames carry the bezel on the img so captions sit on parchment */
@@ -1176,7 +1170,7 @@ hr {
   padding: 40px 44px 44px;
   background: var(--paper-hi);
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 18px;
 }
 
 .landing .depth::before {
@@ -1184,7 +1178,7 @@ hr {
   position: absolute;
   inset: 12px;
   border: 1px solid var(--rule);
-  border-radius: 2px;
+  border-radius: 10px;
   opacity: 0.55;
   pointer-events: none;
 }
@@ -1278,7 +1272,7 @@ hr {
   padding: 22px 24px 24px;
   background: var(--paper-hi);
   border: 1px solid var(--rule-2);
-  border-radius: 6px;
+  border-radius: 18px;
   box-shadow: 0 12px 28px -22px rgba(27, 24, 20, 0.35);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
@@ -1389,23 +1383,31 @@ hr {
 }
 
 .landing .faq details {
-  border-top: 1px solid var(--rule-2);
+  margin: 0 0 10px;
+  background: var(--paper-hi);
+  border: 1px solid var(--rule-2);
+  border-radius: 18px;
+  transition: border-color 0.12s ease, background 0.12s ease;
 }
 
-.landing .faq details:last-of-type {
-  border-bottom: 1px solid var(--rule-2);
+.landing .faq details:hover {
+  border-color: var(--brass-2);
+}
+
+.landing .faq details[open] {
+  background: linear-gradient(180deg, var(--paper-hi), var(--brass-wash));
+  border-color: var(--brass-2);
 }
 
 .landing .faq summary {
-  padding: 16px 30px 16px 2px;
   position: relative;
+  padding: 16px 60px 16px 20px;
   cursor: pointer;
   list-style: none;
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 1.06rem;
+  font-size: 1.02rem;
   color: var(--ink);
-  transition: color 0.12s ease;
 }
 
 .landing .faq summary::-webkit-details-marker {
@@ -1415,30 +1417,43 @@ hr {
 .landing .faq summary::after {
   content: "+";
   position: absolute;
-  right: 6px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  background: var(--brass-wash);
+  border: 1px solid var(--brass-2);
+  border-radius: 50%;
   color: var(--brass);
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   line-height: 1;
-}
-
-.landing .faq details[open] summary {
-  color: var(--brass);
+  transition: background 0.12s ease, color 0.12s ease;
 }
 
 .landing .faq details[open] summary::after {
   content: "−";
+  background: var(--brass);
+  color: var(--paper-hi);
 }
 
-.landing .faq details p {
-  margin: 0 0 18px;
-  padding-right: 24px;
+.landing .faq details p,
+.landing .faq details ul,
+.landing .faq details ol {
+  margin: 0;
+  padding: 0 22px 18px 20px;
   color: var(--ink-2);
   font-size: 0.97rem;
   line-height: 1.6;
+}
+
+.landing .faq details ul,
+.landing .faq details ol {
+  padding-left: 2.6rem;
 }
 
 /* languages band (dark, gilded edges) ----------------------------------------- */
@@ -1486,7 +1501,7 @@ hr {
   padding: 14px 16px;
   background: rgba(247, 242, 232, 0.05);
   border: 1px solid rgba(247, 242, 232, 0.14);
-  border-radius: 4px;
+  border-radius: 14px;
 }
 
 /* real Indic serifs — Source Serif 4 has no Indic coverage, and system
@@ -1516,7 +1531,7 @@ hr {
   background: var(--lapis-wash);
   border: 1px solid #c9cfdd;
   border-left: 3px solid var(--lapis);
-  border-radius: 4px;
+  border-radius: 18px;
 }
 
 .landing .quiet .hero-note {
@@ -1772,7 +1787,7 @@ hr {
   padding: 18px 22px 20px;
   background: var(--paper);
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 16px;
 }
 
 .toc-title {
@@ -1821,23 +1836,31 @@ hr {
 }
 
 .qa details {
-  border-top: 1px solid var(--rule-2);
+  margin: 0 0 10px;
+  background: var(--paper-hi);
+  border: 1px solid var(--rule-2);
+  border-radius: 18px;
+  transition: border-color 0.12s ease, background 0.12s ease;
 }
 
-.qa details:last-of-type {
-  border-bottom: 1px solid var(--rule-2);
+.qa details:hover {
+  border-color: var(--brass-2);
+}
+
+.qa details[open] {
+  background: linear-gradient(180deg, var(--paper-hi), var(--brass-wash));
+  border-color: var(--brass-2);
 }
 
 .qa summary {
   position: relative;
-  padding: 14px 32px 14px 2px;
+  padding: 16px 60px 16px 20px;
   cursor: pointer;
   list-style: none;
   font-family: var(--serif);
   font-weight: 600;
   font-size: 1.02rem;
   color: var(--ink);
-  transition: color 0.12s ease;
 }
 
 .qa summary::-webkit-details-marker {
@@ -1847,29 +1870,35 @@ hr {
 .qa summary::after {
   content: "+";
   position: absolute;
-  right: 6px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  background: var(--brass-wash);
+  border: 1px solid var(--brass-2);
+  border-radius: 50%;
   color: var(--brass);
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1;
-}
-
-.qa details[open] summary {
-  color: var(--brass);
+  transition: background 0.12s ease, color 0.12s ease;
 }
 
 .qa details[open] summary::after {
   content: "−";
+  background: var(--brass);
+  color: var(--paper-hi);
 }
 
 .qa details p,
 .qa details ul,
 .qa details ol {
-  margin: 0 0 16px;
-  padding-right: 22px;
+  margin: 0;
+  padding: 0 22px 18px 20px;
   color: var(--ink-2);
   font-size: 0.97rem;
   line-height: 1.6;
@@ -1877,7 +1906,7 @@ hr {
 
 .qa details ul,
 .qa details ol {
-  padding-left: 1.45rem;
+  padding-left: 2.6rem;
 }
 
 /* numbered step cards (account deletion, how-tos) */
@@ -1895,7 +1924,7 @@ hr {
   padding: 13px 18px 13px 58px;
   background: var(--paper);
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 14px;
 }
 
 .steps li::before {
