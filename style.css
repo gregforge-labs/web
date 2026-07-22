@@ -39,7 +39,11 @@
 
   /* type */
   --serif: "Source Serif 4", "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", serif;
-  --display: "Fraunces", "Source Serif 4", Georgia, serif;
+  /* Newsreader, not Fraunces: Fraunces's WONK axis defaults ON and swaps in
+     wonky f/l/d/h stems at display sizes via rvrn — unfixable through the
+     standard Google Fonts build. Newsreader's opsz axis is pure outline
+     interpolation: no alternate-glyph surprises. */
+  --display: "Newsreader", "Source Serif 4", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -53,6 +57,8 @@ html {
   /* 1rem = 17px. The body used to be 17px over a 16px root, which made every
      heading sized near 1rem render SMALLER than body copy. Size the root. */
   font-size: 106.25%;
+  /* anchor jumps must clear the landing page's sticky nav */
+  scroll-padding-top: 76px;
 }
 
 body {
@@ -544,8 +550,10 @@ hr {
 }
 
 @media (max-width: 460px) {
-  body {
-    font-size: 16px;
+  /* shrink the ROOT so every rem-derived size compresses together —
+     a px body size here would leave rem elements on the 17px root */
+  html {
+    font-size: 100%;
   }
 
   h1 {
@@ -567,7 +575,10 @@ hr {
   background:
     radial-gradient(1400px 640px at 50% -220px, rgba(139, 111, 47, 0.16), transparent 70%),
     var(--paper);
-  overflow-x: hidden; /* the hero zodiac arc bleeds past small viewports */
+  /* the hero zodiac arc bleeds past small viewports; clip preferred over
+     hidden because it can never create a scroll container */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .landing header,
@@ -611,6 +622,15 @@ hr {
   width: min(1060px, calc(100% - 40px));
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Light unbanded sections. Longhands on purpose, and EARLY on purpose:
+   .depth/.quiet/.trust carry class="section X" and refine their own padding
+   later in the file — a late shorthand here clobbered their horizontal
+   padding once already (content ran under the depth plate's frame). */
+.landing .section {
+  padding-top: 54px;
+  padding-bottom: 10px;
 }
 
 /* nav — sticky, with the page's persistent CTA ------------------------------- */
@@ -683,20 +703,25 @@ hr {
   font-style: normal;
   font-weight: 580;
   font-size: clamp(2.5rem, 5.2vw, 3.625rem);
-  line-height: 1.04;
-  letter-spacing: -0.018em;
+  font-optical-sizing: auto;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
 }
 
 .landing .section-title {
   display: block;
-  margin: 8px 0 18px;
+  /* longhands: a margin shorthand here once zeroed the auto side-margins
+     that center titles inside full-bleed bands */
+  margin-top: 8px;
+  margin-bottom: 18px;
   padding: 0;
   border: none;
   font-family: var(--display);
   font-style: italic;
   font-weight: 500;
   font-size: clamp(1.75rem, 3.2vw, 2.375rem);
-  line-height: 1.12;
+  font-optical-sizing: auto;
+  line-height: 1.15;
   letter-spacing: -0.01em;
 }
 
@@ -708,6 +733,15 @@ hr {
   height: 2px;
   margin-bottom: 12px;
   background: linear-gradient(90deg, var(--brass-2), var(--brass-3));
+  /* interior pages' h2::before carries translateY(-0.35em) — without this
+     reset the tick floats up under the eyebrow and reads as an underline */
+  transform: none;
+}
+
+/* Newsreader hairlines get eaten by halation on the dark bands — thicken */
+.landing .vani .section-title,
+.landing .langs .section-title {
+  font-weight: 540;
 }
 
 /* vermilion tilak dot — brand signature, hero + Vani + close only */
@@ -722,11 +756,14 @@ hr {
   vertical-align: 0.12em;
 }
 
-/* uppercase settings misalign with the body's oldstyle figures */
+/* uppercase settings misalign with the body's oldstyle figures. The
+   font-feature-settings override is required: the body's low-level "onum"
+   inherits in and would silently defeat font-variant-numeric alone. */
 .landing .eyebrow,
 .landing .plan-tag,
 .landing .fact-strip {
   font-variant-numeric: lining-nums;
+  font-feature-settings: "kern", "liga";
 }
 
 /* hero ------------------------------------------------------------------------ */
@@ -771,50 +808,65 @@ hr {
   letter-spacing: 0.04em;
 }
 
-.landing .store-buttons {
+/* official store badges + QR handoff card ------------------------------------- */
+
+.landing .store-row {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 20px;
   margin-top: 26px;
 }
 
-.landing .store-btn {
+.landing .store-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.landing .store-badges a {
   display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 172px;
-  min-height: 54px;
-  padding: 8px 20px 9px;
-  color: var(--paper-hi);
-  background: linear-gradient(180deg, #2c2822, var(--ink));
-  border: 1px solid var(--ink);
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 1px 2px rgba(27, 24, 20, 0.25);
-  text-decoration: none;
-  line-height: 1.15;
-  transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+  border-radius: 8px;
+  transition: transform 0.12s ease;
 }
 
-.landing .store-btn:hover {
-  color: var(--paper-hi);
-  background: linear-gradient(180deg, var(--lapis-2), var(--lapis));
-  border-color: var(--lapis);
-  transform: translateY(-1px);
+.landing .store-badges a:hover {
+  transform: translateY(-2px);
 }
 
-.landing .store-btn-small {
+.landing .store-badges img {
+  display: block;
+  height: 54px;
+  width: auto;
+}
+
+.landing .qr-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 8px;
+  background: var(--paper-hi);
+  border: 1px solid var(--rule-2);
+  border-radius: 8px;
+  color: var(--ink-3);
   font-family: var(--sans);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  opacity: 0.75;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: border-color 0.12s ease;
 }
 
-.landing .store-btn-big {
-  font-family: var(--sans);
-  font-size: 1.06rem;
-  font-weight: 600;
+.landing .qr-card:hover {
+  color: var(--ink-2);
+  border-color: var(--brass-2);
+}
+
+.landing .qr-card img {
+  display: block;
 }
 
 /* phone frame ----------------------------------------------------------------- */
@@ -841,6 +893,10 @@ hr {
 
 .landing .hero-phone {
   position: relative;
+  /* new stacking context: without it the z-index:-1 zodiac arcs join the
+     ROOT context's negative layer and paint behind the body background —
+     i.e. they exist but are invisible */
+  isolation: isolate;
   display: flex;
   justify-content: center;
 }
@@ -959,7 +1015,7 @@ hr {
 }
 
 .landing .vani-points span {
-  color: rgba(247, 242, 232, 0.55);
+  color: rgba(247, 242, 232, 0.66);
   font-family: var(--sans);
   font-size: 0.82rem;
 }
@@ -1138,14 +1194,14 @@ hr {
   inset: 12px;
   pointer-events: none;
   background:
-    linear-gradient(var(--brass-2), var(--brass-2)) 0 0 / 18px 1px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 0 0 / 1px 18px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 100% 0 / 18px 1px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 100% 0 / 1px 18px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 0 100% / 18px 1px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 0 100% / 1px 18px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 100% 100% / 18px 1px,
-    linear-gradient(var(--brass-2), var(--brass-2)) 100% 100% / 1px 18px;
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 0 / 18px 2px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 0 / 2px 18px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 0 / 18px 2px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 0 / 2px 18px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 100% / 18px 2px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 0 100% / 2px 18px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 100% / 18px 2px,
+    linear-gradient(var(--brass-2), var(--brass-2)) 100% 100% / 2px 18px;
   background-repeat: no-repeat;
 }
 
@@ -1310,6 +1366,7 @@ hr {
 }
 
 .landing .plans-cta {
+  display: flex;
   justify-content: center;
   margin-top: 30px;
 }
@@ -1443,7 +1500,7 @@ hr {
 }
 
 .landing .lang-name {
-  color: rgba(247, 242, 232, 0.55);
+  color: rgba(247, 242, 232, 0.66);
   font-family: var(--sans);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -1465,11 +1522,7 @@ hr {
   margin-top: 18px;
 }
 
-/* sections (light, unbanded) --------------------------------------------------- */
-
-.landing .section {
-  padding: 54px 0 10px;
-}
+/* closing blocks --------------------------------------------------------------- */
 
 .landing .attribution {
   margin-top: 44px;
@@ -1554,6 +1607,11 @@ hr {
   .landing .plan-grid {
     grid-template-columns: 1fr;
   }
+
+  /* phones don't scan themselves */
+  .landing .qr-card {
+    display: none;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1582,12 +1640,8 @@ hr {
     font-size: 0.86rem;
   }
 
-  .landing .store-buttons {
-    width: 100%;
-  }
-
-  .landing .store-btn {
-    flex: 1 1 150px;
+  .landing .store-badges img {
+    height: 48px;
   }
 
   .landing .vani-points {

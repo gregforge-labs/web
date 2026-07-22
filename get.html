@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script>if(location.protocol==='http:'&&!/^(localhost|127\.|::1$)/.test(location.hostname))location.replace(location.href.replace(/^http:/,'https:'));</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Get Jyotish Vani</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=Inter:wght@400..700&family=JetBrains+Mono:wght@400..500&display=swap">
+<link rel="stylesheet" href="/style.css?v=20260723">
+<script>
+// The QR code on the landing page points here: route the phone that scanned
+// it straight to its store. Unknown platforms (desktop) see the chooser below.
+(function () {
+  var ua = navigator.userAgent || '';
+  if (/android/i.test(ua)) {
+    location.replace('https://play.google.com/store/apps/details?id=com.jyotishvani.app');
+  } else if (/iphone|ipad|ipod/i.test(ua)) {
+    location.replace('https://apps.apple.com/app/id6772030551');
+  }
+})();
+</script>
+</head>
+<body>
+
+<header>
+<a class="brand" href="/" aria-label="Gregforge Labs home">
+  <img class="brand-icon" src="/assets/app-icon.png" alt="">
+  <span class="brand-text">
+    <span class="brand-name">Jyotish Vani</span>
+    <span class="brand-subtitle">Gregforge Labs</span>
+  </span>
+</a>
+
+<h1>Get Jyotish Vani</h1>
+</header>
+
+<main>
+<p>Choose your store:</p>
+<p style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px">
+  <a href="https://apps.apple.com/app/id6772030551"><img src="/assets/badge-app-store.svg" alt="Download on the App Store" height="52"></a>
+  <a href="https://play.google.com/store/apps/details?id=com.jyotishvani.app"><img src="/assets/badge-google-play.svg" alt="Get it on Google Play" height="52"></a>
+</p>
+<p class="fineprint" style="margin-top:22px">Free to start — casting your kundli takes two minutes.</p>
+</main>
+
+<footer>
+  Gregforge Labs LLC · Sunnyvale, California · <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a>
+</footer>
+</body>
+</html>
