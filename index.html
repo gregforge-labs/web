@@ -5,18 +5,25 @@
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <script>if(location.protocol==='http:'&&!/^(localhost|127\.|::1$)/.test(location.hostname))location.replace(location.href.replace(/^http:/,'https:'));</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Jyotish Vani — your kundli as a book you can read, daily readings from your own chart, panchang and muhurat for your city, honest kundli matching, and Vani, an AI jyotishi that knows your chart. In nine Indian languages.">
-<title>Jyotish Vani — Kundli, Panchang &amp; your own AI Jyotishi</title>
+<meta name="description" content="AstroDyuti is a personal Vedic astrology app for Kundli, Panchanga, Muhurta, Kundli matching, daily horoscope guidance, five-year forecasts, and Vani AI — in nine languages.">
+<meta name="theme-color" content="#1a2a4a">
+<title>AstroDyuti: Kundli, Panchanga, Muhurta &amp; Vedic Astrology</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
 <link rel="canonical" href="https://gregforgelabs.com/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Jyotish Vani">
-<meta property="og:title" content="Jyotish Vani — Kundli, Panchang &amp; your own AI Jyotishi">
-<meta property="og:description" content="Daily readings from your own chart, a 22-chapter kundli, panchang and muhurat for your city, honest matching, and Vani — an AI jyotishi that knows your chart. In 9 Indian languages.">
+<meta property="og:site_name" content="AstroDyuti">
+<meta property="og:title" content="AstroDyuti: Your birth chart, made clear">
+<meta property="og:description" content="Personal Vedic astrology for daily timing, Kundli, Panchanga, matching, forecasts, and Vani AI — in nine languages.">
 <meta property="og:url" content="https://gregforgelabs.com/">
-<meta property="og:image" content="https://gregforgelabs.com/assets/app-icon.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://gregforgelabs.com/assets/astrodyuti-social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AstroDyuti — your birth chart, made clear">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AstroDyuti: Your birth chart, made clear">
+<meta name="twitter:description" content="Personal Vedic astrology for Kundli, Panchanga, Muhurta, matching, forecasts, and Vani AI.">
+<meta name="twitter:image" content="https://gregforgelabs.com/assets/astrodyuti-social-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500..650;1,6..72,500..650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=Inter:wght@400..700&family=JetBrains+Mono:wght@400..500&display=swap">
@@ -27,7 +34,35 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@500&text=%E0%B4%AE%E0%B4%B2%E0%B4%AF%E0%B4%BE%E0%B4%B3%E0%B4%82&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500&text=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@500&text=%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AB%80&display=swap">
-<link rel="stylesheet" href="/style.css?v=20260724">
+<link rel="stylesheet" href="/style.css?v=20260805">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gregforgelabs.com/#organization",
+      "name": "Gregforge Labs LLC",
+      "url": "https://gregforgelabs.com/",
+      "logo": "https://gregforgelabs.com/assets/app-icon.png",
+      "email": "support@gregforgelabs.com"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://gregforgelabs.com/#astrodyuti-app",
+      "name": "AstroDyuti",
+      "alternateName": "Jyotish Vani",
+      "description": "A personal Vedic astrology app for Kundli, Panchanga, Muhurta, matching, daily guidance, forecasts, and Vani AI.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Android",
+      "url": "https://gregforgelabs.com/",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.jyotishvani.app",
+      "image": "https://gregforgelabs.com/assets/astrodyuti-social-card.png",
+      "publisher": { "@id": "https://gregforgelabs.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body class="landing">
 
@@ -35,7 +70,7 @@
   <a class="brand" href="/">
     <img class="brand-icon" src="/assets/app-icon.png" alt="">
     <span class="brand-text">
-      <span class="brand-name">Jyotish Vani</span>
+      <span class="brand-name">AstroDyuti</span>
       <span class="brand-subtitle">Gregforge Labs LLC</span>
     </span>
   </a>
@@ -53,15 +88,16 @@
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow eyebrow-tilak">Vedic astrology · Jyotiṣa</p>
-      <h1>People have asked the sky these questions for thousands of&nbsp;years.</h1>
-      <p class="lede">Should I take the job? Is this a good week to begin? Are we right for each other? Vedic astrology answers from one thing — your own birth chart. Jyotish Vani puts that whole tradition in your pocket, in your language, in words anyone can understand.</p>
+      <h1>Your birth chart, written for your&nbsp;life.</h1>
+      <p class="lede">AstroDyuti turns your kundli into clear daily guidance — with panchang, muhurat, matching, forecasts, and Vani, an AI jyotishi that already knows your chart.</p>
+      <p class="hero-note"><strong>Jyotish Vani is now AstroDyuti.</strong> Same charts, same Vani assistant — a new name for the same app.</p>
       <div class="store-row">
         <div class="store-badges">
-          <a href="https://apps.apple.com/app/id6772030551"><img src="/assets/badge-app-store.svg" alt="Download on the App Store" height="54"></a>
+          <span class="store-badge-pending" aria-label="AstroDyuti for iPhone is awaiting App Store release"><img src="/assets/badge-app-store.svg" alt="" height="54"><small>iPhone · awaiting release</small></span>
           <a href="https://play.google.com/store/apps/details?id=com.jyotishvani.app"><img src="/assets/badge-google-play.svg" alt="Get it on Google Play" height="54"></a>
         </div>
         <a class="qr-card" href="/get.html">
-          <img src="/assets/qr-get.svg" alt="QR code — scan with your phone to download Jyotish Vani" width="88" height="88">
+          <img src="/assets/qr-get.svg" alt="QR code — scan with your phone to download AstroDyuti" width="88" height="88">
           <span>Scan with<br>your phone</span>
         </a>
       </div>
@@ -70,7 +106,7 @@
     </div>
     <div class="hero-phone">
       <div class="phone">
-        <img src="/assets/screens/01-home.jpg" width="640" height="1385" alt="Jyotish Vani home screen showing a daily reading composed from a personal birth chart">
+        <img src="/assets/screens/astrodyuti-home.webp" width="640" height="1392" alt="AstroDyuti home showing a personal daily reading and current-hour guidance">
       </div>
     </div>
   </section>
@@ -79,16 +115,16 @@
   <section class="band vani">
     <div class="vani-inner">
       <div class="vani-phone">
-        <div class="phone"><img loading="lazy" src="/assets/screens/04-vani-chat.jpg" width="640" height="1385" alt="Ask Vani — a chat answering from your own birth chart"></div>
+        <div class="phone"><img loading="lazy" src="/assets/screens/astrodyuti-vani.webp" width="640" height="1392" alt="Ask Vani — personal questions and suggested prompts grounded in a birth chart"></div>
       </div>
       <div class="vani-copy">
         <p class="eyebrow eyebrow-tilak">Meet Vani</p>
         <h2 class="section-title">Ask anything. Your chart&nbsp;answers.</h2>
         <p>Which dasha am I in? Is this a good month to change jobs? When does this hard phase ease? Vani has already read your kundli — every planet, every period — before you ask. It answers in seconds, in plain words, in your language.</p>
-        <p>And it doesn't tell you what you want to hear. Every answer names the classical rule it stands on, so you can see exactly where it comes from. If your chart says wait, Vani says wait.</p>
+        <p>Vani grounds each response in your birth chart and its Jyotish calculations, then explains the chart factors behind the reading in plain language. If your chart says wait, Vani says wait.</p>
         <ul class="vani-points">
           <li><strong>Knows your whole chart</strong><span>Not generic answers — yours</span></li>
-          <li><strong>Cites its classical basis</strong><span>See the rule behind every reading</span></li>
+          <li><strong>Explains its chart basis</strong><span>See the factors behind a reading</span></li>
           <li><strong>Speaks nine languages</strong><span>Ask in the language you think in</span></li>
           <li><strong>No appointments, no per-minute fees</strong><span>Your jyotishi is already in your pocket</span></li>
         </ul>
@@ -156,16 +192,18 @@
 
   <!-- ======================= gallery ======================= -->
   <section class="section gallery-section">
-    <p class="eyebrow">A quiet, composed design</p>
-    <h2 class="section-title">Made to be read, not scrolled&nbsp;past.</h2>
+    <p class="eyebrow">See AstroDyuti</p>
+    <h2 class="section-title">A clearer way to read your&nbsp;chart.</h2>
     <div class="gallery" tabindex="0">
-      <figure class="phone"><img loading="lazy" src="/assets/screens/02-kundli-toc.jpg" width="640" height="1385" alt="The chapters of your kundli — table of contents"><figcaption>Your kundli's 22 chapters</figcaption></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/05-panchang-today.jpg" width="640" height="1385" alt="Panchang for today, computed for your city"><figcaption>Panchang for your city</figcaption></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/08-this-hour.jpg" width="640" height="1385" alt="This Hour — a live verdict on the quality of the current hour"><figcaption>This hour, verdict live</figcaption></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/03-match.jpg" width="640" height="1385" alt="Kundli matching with all 36 gunas"><figcaption>All 36 points of matching</figcaption></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/06-chart-plate.jpg" width="640" height="1385" alt="Birth chart plate in North and South Indian styles"><figcaption>North &amp; South Indian plates</figcaption></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/09-muhurta.jpg" width="640" height="1385" alt="Muhurat finder scanning days ahead for good windows"><figcaption>The muhurat finder</figcaption></figure>
-      <figure class="phone"><img loading="lazy" src="/assets/screens/12-forecast.jpg" width="640" height="1385" alt="Five-year forecast by life area"><figcaption>Your next five years</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-01.webp" width="660" height="1434" alt="AstroDyuti home preview showing a daily reading and current-hour guidance"><figcaption>Your day</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-02.webp" width="660" height="1434" alt="AstroDyuti This Hour preview showing a live Vedic timing verdict"><figcaption>This Hour</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-03.webp" width="660" height="1434" alt="AstroDyuti Vani preview showing suggested questions grounded in a birth chart"><figcaption>Vani chat</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-04.webp" width="660" height="1434" alt="AstroDyuti Kundli preview showing a Rasi birth chart"><figcaption>Birth chart</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-06.webp" width="660" height="1434" alt="AstroDyuti matching preview showing the precise birth-detail entry flow"><figcaption>Kundli matching</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-07.webp" width="660" height="1434" alt="AstroDyuti language selector showing English and eight regional Indian languages"><figcaption>Nine languages</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-08.webp" width="660" height="1434" alt="AstroDyuti Panchanga preview computed for the user's city"><figcaption>City panchanga</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-09.webp" width="660" height="1434" alt="AstroDyuti Muhurat preview showing a search for an auspicious time window"><figcaption>Muhurat finder</figcaption></figure>
+      <figure class="store-art"><img loading="lazy" src="/assets/screens/astrodyuti-store-12.webp" width="660" height="1434" alt="AstroDyuti forecast preview showing five-year arcs for major areas of life"><figcaption>Five-year forecast</figcaption></figure>
     </div>
   </section>
 
@@ -221,7 +259,7 @@
         </div>
       </div>
       <div class="store-badges plans-cta">
-        <a href="https://apps.apple.com/app/id6772030551"><img src="/assets/badge-app-store.svg" alt="Download on the App Store" height="54"></a>
+        <span class="store-badge-pending" aria-label="AstroDyuti for iPhone is awaiting App Store release"><img src="/assets/badge-app-store.svg" alt="" height="54"><small>iPhone · awaiting release</small></span>
         <a href="https://play.google.com/store/apps/details?id=com.jyotishvani.app"><img src="/assets/badge-google-play.svg" alt="Get it on Google Play" height="54"></a>
       </div>
       <p class="plans-note">Monthly subscriptions, cancel anytime in your store settings. Subscribers can top up with one-time Vani credit packs. Details in the <a href="/refund.html">Refund &amp; Subscription Terms</a>.</p>
@@ -238,7 +276,7 @@
     </details>
     <details>
       <summary>How is Vani different from consulting a jyotishi?</summary>
-      <p>Vani answers from your own chart and running dasha, names the classical rule behind each answer, and is available whenever a question occurs to you — no appointment, no per-minute charges. It is a companion for reflection, not a replacement for human judgment on big decisions.</p>
+      <p>Vani answers from your own chart and running dasha, explains the relevant chart factors, and is available whenever a question occurs to you — no appointment, no per-minute charges. It is a companion for reflection, not a replacement for human judgment on big decisions.</p>
     </details>
     <details>
       <summary>Is my birth data private?</summary>
@@ -258,7 +296,7 @@
   <section id="languages" class="band langs">
     <div class="band-inner">
     <p class="eyebrow">In your language</p>
-    <h2 class="section-title">Written, never machine-translated.</h2>
+    <h2 class="section-title">Written for the way you speak.</h2>
     <p class="depth-lede">Your daily reading and rashifal read the way your family actually speaks — in nine languages:</p>
     <ul class="lang-grid">
       <li><span class="lang-native">English</span></li>
@@ -281,11 +319,11 @@
     <p class="depth-lede">Cast your kundli free in two minutes. Read your day, meet Vani — your first three questions are free — and go as deep as you want from there.</p>
     <div class="store-row">
       <div class="store-badges">
-        <a href="https://apps.apple.com/app/id6772030551"><img src="/assets/badge-app-store.svg" alt="Download on the App Store" height="54"></a>
+        <span class="store-badge-pending" aria-label="AstroDyuti for iPhone is awaiting App Store release"><img src="/assets/badge-app-store.svg" alt="" height="54"><small>iPhone · awaiting release</small></span>
         <a href="https://play.google.com/store/apps/details?id=com.jyotishvani.app"><img src="/assets/badge-google-play.svg" alt="Get it on Google Play" height="54"></a>
       </div>
       <a class="qr-card" href="/get.html">
-        <img src="/assets/qr-get.svg" alt="QR code — scan with your phone to download Jyotish Vani" width="88" height="88">
+        <img src="/assets/qr-get.svg" alt="QR code — scan with your phone to download AstroDyuti" width="88" height="88">
         <span>Scan with<br>your phone</span>
       </a>
     </div>
@@ -294,10 +332,10 @@
 
   <div class="attribution">
     <strong>Swiss Ephemeris Inside</strong><br>
-    Astronomical calculations in Jyotish Vani are performed by the Swiss Ephemeris library under a paid commercial Swiss Ephemeris Professional Edition license held by Gregforge Labs LLC.
+    Astronomical calculations in AstroDyuti are performed by the Swiss Ephemeris library under a paid commercial Swiss Ephemeris Professional Edition license held by Gregforge Labs LLC.
   </div>
 
-  <p class="fineprint disclaimer-line">Jyotish Vani offers traditional Vedic astrology readings for reflection and guidance. It is not a substitute for professional medical, legal, or financial advice. For adults 18&nbsp;and&nbsp;over. See the full <a href="/disclaimer.html">Disclaimer</a>.</p>
+  <p class="fineprint disclaimer-line">AstroDyuti offers traditional Vedic astrology readings for reflection and guidance. It is not a substitute for professional medical, legal, or financial advice. For adults 18&nbsp;and&nbsp;over. See the full <a href="/disclaimer.html">Disclaimer</a>.</p>
 
 </main>
 

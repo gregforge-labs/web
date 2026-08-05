@@ -4,7 +4,7 @@ Static pages for Gregforge Labs LLC. Hosted via GitHub Pages.
 
 - `index.html` — landing page
 - `support.html` — support and app-review contact page
-- `privacy.html` — privacy policy for the Jyotish Vani app
+- `privacy.html` — privacy policy for the AstroDyuti app
 - `terms.html` — terms of service
 - `disclaimer.html` — astrology and AI-output disclaimer
 - `refund.html` — refund and subscription terms
@@ -14,7 +14,7 @@ Static pages for Gregforge Labs LLC. Hosted via GitHub Pages.
 - `cookies.html` — cookies and web-tracking notice for the static site
 - `delete-account.html` — account and data deletion instructions
 - `style.css` — shared styling (Editorial-Celestial palette, mirrors the app theme)
-- `assets/` — Jyotish Vani icon assets reused from the app
+- `assets/` — AstroDyuti icon assets reused from the app
 - `.nojekyll` — disables Jekyll processing on GitHub Pages
 
 To preview locally:

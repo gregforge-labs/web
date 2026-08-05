@@ -91,6 +91,12 @@ a:hover {
   text-decoration-color: var(--brass);
 }
 
+main p a,
+main li a,
+.toc a {
+  overflow-wrap: anywhere;
+}
+
 header,
 main,
 footer {
@@ -144,6 +150,7 @@ h1,
 h2,
 h3 {
   color: var(--ink);
+  text-wrap: balance;
 }
 
 h1,
@@ -198,6 +205,7 @@ h3 {
 
 p {
   margin: 0.75rem 0;
+  text-wrap: pretty;
 }
 
 ul,
@@ -448,7 +456,7 @@ hr {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 44px;
   padding: 0.6rem 1.35rem;
   color: var(--paper-hi);
   background: var(--ink);
@@ -660,6 +668,9 @@ hr {
 }
 
 .landing .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--ink-2);
   font-weight: 500;
   text-decoration: none;
@@ -681,6 +692,14 @@ hr {
   border-radius: 999px;
   font-weight: 600;
   transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 4px;
 }
 
 .landing .nav-links a.nav-cta:hover {
@@ -826,6 +845,31 @@ hr {
   transition: transform 0.12s ease;
 }
 
+.store-badge-pending {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--ink-3);
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.store-badge-pending img {
+  display: block;
+  width: auto;
+  opacity: 0.48;
+  filter: grayscale(1);
+}
+
+.landing .store-badges .store-badge-pending img {
+  height: 54px;
+}
+
 .landing .store-badges a:hover {
   transform: translateY(-2px);
 }
@@ -915,14 +959,16 @@ hr {
 }
 
 .landing .hero-phone::before {
-  width: 520px;
-  height: 520px;
+  width: min(520px, 100%);
+  height: auto;
+  aspect-ratio: 1;
   border: 1px dashed rgba(139, 111, 47, 0.3);
 }
 
 .landing .hero-phone::after {
-  width: 410px;
-  height: 410px;
+  width: min(410px, 82%);
+  height: auto;
+  aspect-ratio: 1;
   border: 1px solid rgba(139, 111, 47, 0.15);
 }
 
@@ -1128,24 +1174,23 @@ hr {
   border-radius: 20px;
 }
 
-/* gallery frames carry the bezel on the img so captions sit on parchment */
-.landing .gallery figure.phone {
+/* store artwork already includes its screen frame; the website adds only a
+   quiet keyline so the alternating lapis/parchment sequence stays intact */
+.landing .gallery figure.store-art {
   flex: 0 0 auto;
-  width: 236px;
+  width: 252px;
   margin: 0;
   padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
   scroll-snap-align: center;
 }
 
-.landing .gallery figure.phone img {
-  border: 6px solid #23201a;
-  border-radius: 24px;
-  outline: 1px solid rgba(217, 185, 104, 0.3);
-  box-shadow: 0 18px 36px -20px rgba(27, 24, 20, 0.5);
+.landing .gallery figure.store-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(139, 111, 47, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 18px 36px -22px rgba(27, 24, 20, 0.52);
 }
 
 .landing .gallery figcaption {
@@ -1637,9 +1682,54 @@ hr {
     gap: 10px;
   }
 
+  .landing .nav .brand {
+    min-width: 0;
+  }
+
+  .landing .nav .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .landing .nav .brand-name {
+    font-size: 1rem;
+  }
+
+  .landing .nav .brand-subtitle,
+  .landing .nav-links a:not(.nav-cta) {
+    display: none;
+  }
+
   .landing .nav-links {
-    gap: 14px;
-    font-size: 0.8rem;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin-left: auto;
+    font-size: 0.82rem;
+  }
+
+  .landing .nav-links a.nav-cta {
+    min-height: 44px;
+    padding: 8px 14px;
+  }
+
+  .landing .hero {
+    gap: 28px;
+    padding-top: 34px;
+    padding-bottom: 24px;
+  }
+
+  .landing .hero .lede {
+    font-size: 1.08rem;
+  }
+
+  .landing .hero-phone::before {
+    width: min(380px, calc(100vw - 32px));
+    height: auto;
+  }
+
+  .landing .hero-phone::after {
+    width: min(300px, calc(100vw - 72px));
+    height: auto;
   }
 
   .landing .features {
@@ -1660,6 +1750,10 @@ hr {
     height: 48px;
   }
 
+  .landing .store-badges .store-badge-pending img {
+    height: 48px;
+  }
+
   .landing .vani-points {
     grid-template-columns: 1fr;
   }
@@ -1670,6 +1764,59 @@ hr {
 
   .landing .footer-cols {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing .nav {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .landing .nav .brand {
+    gap: 9px;
+  }
+
+  .landing .nav .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .landing .store-badges {
+    gap: 8px;
+  }
+
+  .landing .store-badges a {
+    min-height: 44px;
+  }
+
+  .landing .store-badges img {
+    height: 40px;
+  }
+
+  .landing .store-badges .store-badge-pending img {
+    height: 40px;
+  }
+
+  .landing .hero-phone::before {
+    width: min(300px, calc(100vw - 24px));
+    height: auto;
+  }
+
+  .landing .hero-phone::after {
+    width: min(240px, calc(100vw - 68px));
+    height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
