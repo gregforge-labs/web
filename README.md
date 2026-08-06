@@ -25,7 +25,7 @@ python3 -m http.server
 
 Then open `http://127.0.0.1:8000/`. Use the local server instead of opening files directly, because the site uses root-relative links that match GitHub Pages.
 
-DNS for `gregforgelabs.com` should point the apex domain to the GitHub Pages A records only:
+The canonical production domain is `astrodyuti.com`. DNS should point the apex domain to the GitHub Pages A records only:
 
 ```text
 185.199.108.153
@@ -33,3 +33,7 @@ DNS for `gregforgelabs.com` should point the apex domain to the GitHub Pages A r
 185.199.110.153
 185.199.111.153
 ```
+
+The `www` host should be a CNAME to `gregforge-labs.github.io`. GitHub Pages redirects it to the canonical apex domain. Keep the GitHub organization-level domain verification TXT record in DNS.
+
+Legacy and defensive domains, including `gregforgelabs.com`, should issue permanent path-preserving redirects to `https://astrodyuti.com`; they should not serve duplicate copies of the site.
