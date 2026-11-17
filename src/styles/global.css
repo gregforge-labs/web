@@ -24,7 +24,10 @@ h1 { font-size: clamp(3rem, 5.4vw, 5.25rem); }
 h2 { font-size: clamp(2.3rem, 3.7vw, 3.65rem); }
 h3 { font-size: 1.65rem; }
 em { font-weight: inherit; }
-.eyebrow { display: block; margin: 0 0 20px; color: var(--gold); font-size: 11px; font-weight: 650; letter-spacing: .17em; line-height: 1.5; text-transform: uppercase; }
+.eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 19px; color: var(--gold); font-family: var(--display); font-size: var(--label-size); font-style: italic; font-weight: 500; letter-spacing: .005em; line-height: 1.3; text-transform: none; text-wrap: balance; }
+.eyebrow::before { content: ''; width: 25px; height: 1px; flex: 0 0 25px; background: linear-gradient(90deg, currentColor, transparent); opacity: .7; }
+.section-heading.centered .eyebrow, .eyebrow-centered { justify-content: center; }
+.section-heading.centered .eyebrow::after, .eyebrow-centered::after { content: ''; width: 25px; height: 1px; flex: 0 0 25px; background: linear-gradient(270deg, currentColor, transparent); opacity: .7; }
 .section { padding-block: 88px; }
 .section-heading { margin-bottom: 40px; }
 .section-heading p:not(.eyebrow) { max-width: 530px; margin-top: 20px; color: var(--muted); }
@@ -41,7 +44,8 @@ em { font-weight: inherit; }
 .button.light { color: var(--navy); background: var(--paper); border-color: var(--paper); }
 .button.light:hover { background: var(--gold-light); border-color: var(--gold-light); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.back-link { display: inline-block; margin-bottom: 36px; color: var(--muted); font-size: 13px; text-decoration: none; }
+.back-link { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 36px; color: var(--muted); font-size: 13px; text-decoration: none; }
+.back-link svg { transform: rotate(180deg); }
 
 /* One header and footer for every route. */
 .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(36, 40, 32, .1); background: rgba(248, 245, 238, .96); backdrop-filter: blur(12px); }
@@ -58,7 +62,7 @@ em { font-weight: inherit; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr .85fr 1fr 1.1fr; gap: 40px; }
 .footer-brand p { margin: 22px 0 16px; color: var(--muted); font-family: var(--display); font-size: 25px; line-height: 1.25; letter-spacing: -.02em; }
 .contact-link { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
-.footer-heading { margin: 4px 0 20px; font-family: var(--sans); font-size: 12px; font-weight: 600; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; }
+.footer-heading { margin: 4px 0 20px; color: var(--ink); font-family: var(--display); font-size: 21px; font-style: italic; font-weight: 500; line-height: 1.3; letter-spacing: 0; text-transform: none; }
 .site-footer ul { padding: 0; margin: 0; list-style: none; }
 .site-footer li { margin-bottom: 11px; }
 .site-footer li a { color: #575d50; font-size: 13px; text-decoration: none; }
@@ -79,9 +83,12 @@ em { font-weight: inherit; }
 .faq-list details { border-bottom: 1px solid var(--line); scroll-margin-top: 110px; }
 .faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; padding: 20px 0; list-style: none; color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.6; }
 .faq-list summary::-webkit-details-marker { display: none; }
-.faq-symbol { position: relative; flex: 0 0 18px; width: 18px; height: 18px; }
-.faq-symbol::before, .faq-symbol::after { position: absolute; content: ''; top: 8px; left: 3px; width: 12px; height: 1px; background: var(--muted); }
+.faq-symbol { position: relative; flex: 0 0 27px; width: 27px; height: 27px; border: 1px solid #d5d4c6; border-radius: 50%; background: #fffdf84d; transition: background .15s, border-color .15s; }
+.faq-symbol::before, .faq-symbol::after { position: absolute; content: ''; top: 12px; left: 7px; width: 11px; height: 1px; background: var(--muted); }
 .faq-symbol::after { transform: rotate(90deg); transition: transform .15s; }
+.faq-list summary:hover .faq-symbol { background: var(--sand); border-color: #aaa993; }
+details[open] > summary .faq-symbol { background: var(--ink); border-color: var(--ink); }
+details[open] > summary .faq-symbol::before, details[open] > summary .faq-symbol::after { background: var(--surface); }
 details[open] > summary .faq-symbol::after { transform: rotate(0); }
 .faq-answer { padding: 0 34px 25px 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
 .faq-answer a { color: var(--ink); }
@@ -145,7 +152,8 @@ details[open] > summary .faq-symbol::after { transform: rotate(0); }
   .section-heading.split { display: block; }
   .section-heading.split > p { margin-top: 20px; }
   .section-heading { margin-bottom: 30px; }
-  .eyebrow { font-size: 11px; margin-bottom: 16px; }
+  .eyebrow { font-size: 19px; margin-bottom: 16px; gap: 10px; }
+  .eyebrow::before, .section-heading.centered .eyebrow::after, .eyebrow-centered::after { width: 20px; flex-basis: 20px; }
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
   .footer-brand { grid-column: 1 / -1; }
   .footer-brand p { display: none; }

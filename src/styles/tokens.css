@@ -13,6 +13,7 @@
   --green: #3e604b;
   --display: 'Newsreader Variable', Georgia, serif;
   --sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --label-size: 21px;
   --frame: 1160px;
   --radius: 20px;
 }
