@@ -1,6 +1,11 @@
 import { languages, plans, site } from './site';
 
-export interface Question { id: string; question: string; answer: string }
+export interface Question {
+  id: string;
+  question: string;
+  answer: string;
+  more?: { heading: string; linkLabel: string; html: string };
+}
 export interface FaqSection { id: string; title: string; questions: Question[] }
 const languageNames = languages.map(({ name }) => name).join(', ');
 
@@ -15,17 +20,71 @@ export const faqSections: FaqSection[] = [
     { id: 'devices', question: 'Which devices are supported?', answer: '<p>AstroDyuti is designed for iPhone and Android phones. Check the store listing for your device’s current operating-system requirements. There is no separate tablet layout.</p>' },
   ] },
   { id: 'your-kundli-panchang-and-readings', title: 'Your chart & daily timing', questions: [
-    { id: 'kundli', question: 'What is a kundli?', answer: '<p>A kundli is your Vedic birth chart: a map of the sky for your birth time and place. AstroDyuti presents it in chapters covering planets, houses, divisional charts, planetary periods, transits, and other classical methods, with explanations in everyday language. Both North Indian and South Indian chart styles are available.</p>' },
-    { id: 'astrology-system', question: 'Which astrology system does the app use?', answer: '<p>AstroDyuti follows the sidereal zodiac used in Vedic astrology (Jyotish), with Lahiri ayanamsa as the default correction. Planetary positions are calculated using Swiss Ephemeris. This differs from the tropical zodiac common in Western astrology, so your signs may differ. Jyotish traditions also differ in some conventions; the app makes consistent choices rather than claiming one tradition is the only correct one.</p>' },
-    { id: 'panchang', question: 'What are panchang, muhurta, and This Hour?', answer: '<p>Panchang is the daily Vedic almanac, including the lunar day, lunar constellation, sunrise, sunset, festivals, and timing windows for your city. Muhurta helps you explore auspicious windows for a planned activity. This Hour brings several traditional timing factors into a quick overview of the current hour. These are interpretive guides, not guarantees of an outcome.</p>' },
-    { id: 'dashas', question: 'What are dashas?', answer: '<p>Dashas are the planetary periods used in Vedic astrology to interpret different phases of life. The app includes Vimshottari, Yogini, Ashtottari, Chara, and Kalachakra systems. Some advanced chapters require a subscription; the app identifies them before you open them.</p>' },
+    {
+      id: 'kundli', question: 'What is a kundli?',
+      answer: '<p>A kundli is your Vedic birth chart: a map of the sky for your birth time and place. AstroDyuti explains its parts in readable chapters, from the essentials to more advanced methods.</p>',
+      more: {
+        heading: 'The main parts of a birth chart', linkLabel: 'Explore the parts of a birth chart',
+        html: `<ul>
+          <li><strong>Planets:</strong> their positions at birth form part of the chart. Jyotish associates them with different themes; the Sun and Moon are also included in this traditional group.</li>
+          <li><strong>Signs, or rashis:</strong> twelve equal divisions of the zodiac describe where a planet lies along its circle.</li>
+          <li><strong>Houses:</strong> twelve chart divisions are traditionally associated with life areas such as home, work, and relationships. A sign and a house describe different things.</li>
+          <li><strong>Ascendant, or lagna:</strong> the zodiac point rising on the eastern horizon at birth. It helps orient the chart and depends on birth time and place.</li>
+        </ul><p>The natal chart records the birth moment. Dashas add a timeline of planetary periods; transits describe the planets’ positions at another time. Astrological readings consider these factors together.</p><p>North Indian and South Indian chart styles arrange the information differently on the page. Both can display the same underlying chart.</p>`,
+      },
+    },
+    { id: 'astrology-system', question: 'Which astrology system does the app use?', answer: '<p>AstroDyuti follows the sidereal zodiac used in Vedic astrology, also called Jyotish. It uses Lahiri ayanamsa as the default offset between tropical and sidereal zodiac positions, with astronomical calculations supplied by Swiss Ephemeris.</p>' },
+    {
+      id: 'vedic-signs', question: 'Why might my Vedic sign differ from my Western sign?',
+      answer: '<p>Vedic and most Western horoscopes use different starting points for the zodiac, so the same planet can appear in a different sign. Also compare the same body: a Vedic rashi often means the Moon’s sign, while a Western horoscope usually means the Sun’s sign.</p>',
+      more: {
+        heading: 'Zodiac systems, Sun signs, Moon signs, and rising signs', linkLabel: 'Explore Vedic and Western signs',
+        html: `<p>The tropical zodiac begins at the March equinox. The sidereal zodiac uses a reference tied to the stars. The equinox slowly shifts relative to the stars, a movement called precession; the angular offset between the two zodiac frames is called <strong>ayanamsa</strong>. AstroDyuti uses the Lahiri convention by default.</p><p>Both systems divide the zodiac into twelve equal signs. They differ in where those signs begin, so a planet can fall in a different sign when you change systems.</p><ul>
+          <li><strong>Sun sign:</strong> the sign containing the Sun at birth.</li>
+          <li><strong>Moon sign:</strong> the sign containing the Moon at birth; this is often the rashi used in Vedic readings.</li>
+          <li><strong>Rising sign:</strong> the sign containing the ascendant, the zodiac point rising on the eastern horizon at the birth moment.</li>
+        </ul><p>Your Sun, Moon, and rising signs can differ within one chart. When comparing apps, check the same placement, zodiac system, birth details, and calculation settings.</p>`,
+      },
+    },
+    {
+      id: 'panchang', question: 'What are panchang, muhurta, and This Hour?',
+      answer: '<p>Panchang is a daily Vedic calendar of lunar dates and timings for your city. Muhurta explores time windows traditionally considered favourable for an activity, while This Hour gives a quick overview of the current hour.</p>',
+      more: {
+        heading: 'The five parts of the panchang', linkLabel: 'Explore panchang and daily timing',
+        html: `<ul>
+          <li><strong>Tithi:</strong> the lunar day, measured by each 12-degree increase in the Moon’s angular separation from the Sun. It does not have a fixed 24-hour length.</li>
+          <li><strong>Nakshatra:</strong> the section of the sidereal zodiac containing the Moon. This system divides the zodiac into 27 equal sections.</li>
+          <li><strong>Yoga:</strong> a calendar factor calculated from the combined zodiac positions of the Sun and Moon.</li>
+          <li><strong>Karana:</strong> half of a tithi.</li>
+          <li><strong>Vara:</strong> the weekday used in the traditional almanac.</li>
+        </ul><p>Several of these factors change at specific moments during a day, rather than at midnight. Your city and timezone are used for local time displays and sunrise or sunset calculations.</p><p>A muhurta search combines timing factors for a particular activity; This Hour offers a shorter overview. These are traditional interpretations of timing, not guarantees that an activity will succeed.</p>`,
+      },
+    },
+    {
+      id: 'dashas', question: 'What is a dasha, or planetary period?',
+      answer: '<p>A dasha is a planetary period calculated from your birth chart and used in Vedic astrology to interpret phases of life. It is read alongside transits, the planets’ current positions.</p>',
+      more: {
+        heading: 'How a dasha timeline is calculated', linkLabel: 'Explore planetary periods',
+        html: `<p>In <strong>Vimshottari dasha</strong>, the Moon’s position at birth determines the starting planetary period. The calculation uses its nakshatra, one of 27 equal sections of the sidereal zodiac, and how far the Moon has travelled through that section.</p><p>The fraction of that section remaining determines the fraction of the first period remaining at birth. For example, a Moon halfway through its nakshatra leaves half of that planet’s full period remaining.</p><ul>
+          <li><strong>Mahadasha:</strong> the main planetary period.</li>
+          <li><strong>Antardasha:</strong> a shorter sub-period within a mahadasha, with its own planetary association.</li>
+        </ul><p>AstroDyuti also includes Yogini, Ashtottari, Chara, and Kalachakra systems. Each has its own rules, so their timelines can differ. Some advanced chapters require a subscription.</p><p>A period’s name alone is not a prediction. Traditional interpretations also consider the planet’s place in the birth chart and other timing factors.</p>`,
+      },
+    },
     { id: 'accuracy', question: 'How should I understand the readings?', answer: '<p>Accurate astronomical calculations depend on the birth information you provide. Astrological interpretations are part of a symbolic tradition, not scientifically validated predictions. Use them for reflection alongside your own judgment. They are not medical, legal, financial, or mental-health advice. See the <a href="/disclaimer.html">Disclaimer</a>.</p>' },
     { id: 'notifications', question: 'What notifications will I receive?', answer: '<p>You can enable reading reminders, timing prompts, and festival or transit alerts. Notifications are available on every plan. Manage them with the notification switch in Settings and your device’s notification permissions.</p>' },
   ] },
   { id: 'vani-and-match', title: 'Vani & compatibility', questions: [
     { id: 'vani', question: 'What is Vani?', answer: '<p>Vani is an AI astrology guide inside AstroDyuti. Ask about your active profile’s birth chart, planetary periods, and life themes in plain language. Vani uses chart calculations and Jyotish tools to explain relevant factors. Replies are AI-generated and can be wrong or incomplete; use them for reflection rather than consequential decisions.</p>' },
     { id: 'vani-profile', question: 'Which profile does Vani read?', answer: '<p>The profile you currently have active. Switch profiles before asking about a family member’s chart. Vani reads one chart at a time; use Match for a comparison between two people.</p>' },
-    { id: 'match', question: 'How does compatibility matching work?', answer: '<p>Match compares two birth charts using the classical Ashtakuta or Guna Milan method, with a score out of 36 and additional checks. It explains strengths and possible points of friction. A match report is a reference for a conversation, not a verdict on a relationship.</p>' },
+    {
+      id: 'match', question: 'How does compatibility matching work?',
+      answer: '<p>Match compares two birth charts using Ashtakuta, a traditional eight-part matching system with a score out of 36, plus additional checks. Its explanations offer a reference for conversation, not a verdict on a relationship.</p>',
+      more: {
+        heading: 'What the 36-point score represents', linkLabel: 'Explore compatibility matching',
+        html: '<p>Ashtakuta, also called Guna Milan, compares factors derived from the two birth Moons, including their signs and nakshatras—their sections of the sidereal zodiac. The eight factors carry different weights, adding up to a maximum of 36 points.</p><p>The total is a traditional score, not a percentage probability of relationship success. Additional checks can qualify the reading without becoming part of the 36-point total.</p><p>Use the report alongside your own understanding of the relationship, including communication, shared values, consent, and lived experience.</p>',
+      },
+    },
   ] },
   { id: 'plans-billing-and-refunds', title: 'Plans, purchases & subscriptions', questions: [
     { id: 'free', question: 'What can I use for free?', answer: `<p>Cast your kundli, read the Birth Snapshot chapter and daily reading, and check the panchang. Your first ${plans.free.questions} Vani questions are a lifetime free allowance. Eligible deeper chapters, weekly and monthly readings, Match reports, and muhurta searches can unlock after a rewarded ad. Five advanced chapters—Vastu, Kalachakra, Jaimini, Tajika, and KP—require Pro or Max.</p>` },
@@ -41,6 +100,6 @@ export const faqSections: FaqSection[] = [
   ] },
 ];
 
-export const homepageFaqs = ['free', 'birth-time', 'vani', 'outside-india', 'privacy', 'cancel'].map(
+export const homepageFaqs = ['free', 'birth-time', 'vedic-signs', 'dashas', 'vani', 'outside-india', 'privacy', 'cancel'].map(
   (id) => faqSections.flatMap((section) => section.questions).find((question) => question.id === id)!,
 );

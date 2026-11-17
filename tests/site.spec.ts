@@ -69,7 +69,32 @@ test('core content and store choices work without JavaScript', async ({ browser 
   await page.goto('http://127.0.0.1:4322/get.html');
   await expect(page.locator('[data-store="ios"]')).toBeVisible();
   await expect(page.locator('[data-store="android"]')).toBeVisible();
+  await page.goto('http://127.0.0.1:4322/faq.html');
+  const explanation = page.locator('#help-dashas');
+  await explanation.locator('summary').click();
+  await expect(explanation.locator('[data-concept-details]')).toBeVisible();
   await context.close();
+});
+
+test('beginner overview links open the corresponding detailed explanation', async ({ page }) => {
+  await page.goto('/');
+  const overview = page.locator('#question-vedic-signs');
+  await overview.locator('summary').click();
+  await expect(overview.locator('[data-concept-details]')).toHaveCount(0);
+  await overview.locator('.concept-link').click();
+  await expect(page).toHaveURL(/\/faq\.html#help-vedic-signs$/);
+  const explanation = page.locator('#help-vedic-signs');
+  await expect(explanation).toHaveAttribute('open', '');
+  await expect(explanation.locator('[data-concept-details]')).toBeVisible();
+});
+
+test('direct links reveal a detailed concept on a narrow phone', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 780 });
+  await page.goto('/faq.html#help-dashas');
+  const explanation = page.locator('#help-dashas');
+  await expect(explanation).toHaveAttribute('open', '');
+  await expect(explanation.locator('[data-concept-details]')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
 });
 
 for (const [name, userAgent, target] of [
@@ -89,6 +114,9 @@ for (const [name, userAgent, target] of [
 for (const route of ['/', '/faq.html', '/support.html', '/privacy.html', '/delete-account.html']) {
   test(`accessibility check: ${route}`, async ({ page }) => {
     await page.goto(route);
+    if (route === '/faq.html') {
+      await page.locator('.faq-list details').evaluateAll((questions) => questions.forEach((question) => { (question as HTMLDetailsElement).open = true; }));
+    }
     const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(result.violations.map(({ id, nodes }) => ({ id, targets: nodes.map((node) => node.target) }))).toEqual([]);
   });

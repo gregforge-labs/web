@@ -33,6 +33,12 @@ These comparisons use the current local app and backend checkouts. Confirm their
 - [Astro static output formats](https://docs.astro.build/en/reference/configuration-reference/#buildformat)
 - [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/)
 
+## Beginner explanations
+
+The homepage introduces unfamiliar terms where they occur and offers short answers about Vedic signs and dashas. The full FAQ adds optional, more detailed explanations of charts, zodiac frames, planetary periods, panchang, and compatibility. These share the same introductory answers; links open the relevant full answer directly. Keep the homepage overview concise and explain any new term within the deeper answer.
+
+The calculation descriptions were checked against the mobile app's `src/lib/jyotish-core/ephemeris.ts`, `dasas/vimsottari.ts`, `panchang/calculator.ts`, and `compatibility/ashtakoota.ts`. The sidereal/tropical and Lahiri terminology also follows the [Swiss Ephemeris programming documentation](https://www.astro.com/swisseph/swephprg.htm). Definitions describe a traditional interpretive system and do not present its readings or matching scores as scientifically validated predictions.
+
 ## Release context
 
 The redesigned site went live on November 17, 2026. Production now publishes a generated `dist/` artifact through GitHub Actions. The domain, app-ads.txt seller record, app/store-linked page URLs, and HTTPS configuration were preserved. See the README for the current deployment configuration and validation commands.

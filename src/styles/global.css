@@ -87,12 +87,22 @@ em { font-weight: inherit; }
 .faq-symbol::before, .faq-symbol::after { position: absolute; content: ''; top: 12px; left: 7px; width: 11px; height: 1px; background: var(--muted); }
 .faq-symbol::after { transform: rotate(90deg); transition: transform .15s; }
 .faq-list summary:hover .faq-symbol { background: var(--sand); border-color: #aaa993; }
-details[open] > summary .faq-symbol { background: var(--ink); border-color: var(--ink); }
+.faq-list details[open] > summary .faq-symbol { background: var(--ink); border-color: var(--ink); }
 details[open] > summary .faq-symbol::before, details[open] > summary .faq-symbol::after { background: var(--surface); }
 details[open] > summary .faq-symbol::after { transform: rotate(0); }
 .faq-answer { padding: 0 34px 25px 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
 .faq-answer a { color: var(--ink); }
 .faq-answer p + p { margin-top: 14px; }
+.faq-answer-detailed { font-size: 15px; }
+.concept-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; margin-top: 12px; color: var(--gold); font-size: 12px; font-weight: 500; text-decoration: none; }
+.concept-link:hover { text-decoration: underline; }
+.concept-link svg { flex-shrink: 0; }
+.faq-depth { margin-top: 25px; padding-top: 22px; border-top: 1px solid var(--line); }
+.faq-answer .faq-depth h3 { margin: 0 0 15px; padding: 0; color: var(--gold); font-family: var(--display); font-size: 24px; font-style: italic; font-weight: 500; line-height: 1.25; letter-spacing: -.015em; }
+.faq-depth p { margin: 14px 0; }
+.faq-depth ul { padding-left: 20px; margin: 16px 0; }
+.faq-depth li { padding-left: 3px; margin-bottom: 12px; }
+.faq-depth strong { color: var(--ink); font-weight: 550; }
 
 /* Document pages keep their public paths and existing section anchors. */
 .document-heading { padding-block: 44px 52px; }

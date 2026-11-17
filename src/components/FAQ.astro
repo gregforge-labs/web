@@ -1,8 +1,27 @@
 ---
 import type { Question } from '../data/faq';
-interface Props { questions: Question[]; prefix?: string }
-const { questions, prefix = 'question' } = Astro.props;
+import Icon from './Icon.astro';
+interface Props { questions: Question[]; prefix?: string; showDetails?: boolean }
+const { questions, prefix = 'question', showDetails = false } = Astro.props;
 ---
 <div class="faq-list">
-  {questions.map((question) => <details id={`${prefix}-${question.id}`}><summary>{question.question}<span class="faq-symbol" aria-hidden="true"></span></summary><div class="faq-answer" set:html={question.answer} /></details>)}
+  {questions.map((question) => <details id={`${prefix}-${question.id}`}>
+    <summary>{question.question}<span class="faq-symbol" aria-hidden="true"></span></summary>
+    <div class:list={['faq-answer', { 'faq-answer-detailed': showDetails }]}>
+      <div set:html={question.answer} />
+      {question.more && (showDetails
+        ? <div class="faq-depth" data-concept-details><h3>{question.more.heading}</h3><div set:html={question.more.html} /></div>
+        : <a class="concept-link" href={`/faq.html#help-${question.id}`}>{question.more.linkLabel}<Icon size={15} /></a>)}
+    </div>
+  </details>)}
 </div>
+<script>
+  function openLinkedQuestion() {
+    let id: string;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (target instanceof HTMLDetailsElement && target.closest('.faq-list')) target.open = true;
+  }
+  openLinkedQuestion();
+  window.addEventListener('hashchange', openLinkedQuestion);
+</script>

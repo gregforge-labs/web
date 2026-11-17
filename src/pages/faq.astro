@@ -4,8 +4,8 @@ import FAQ from '../components/FAQ.astro';
 import { faqSections } from '../data/faq';
 ---
 <DocumentLayout title="Your questions, answered." description="Help with AstroDyuti: birth charts, daily timing, Vani AI, compatibility, plans, purchases, privacy, and account deletion." category="AstroDyuti help" toc={faqSections.map((section) => ({ id: section.id, title: section.title }))}>
-  <p class="faq-intro">A little help getting started, and clear answers for the details along the way. If you need a hand with your account, <a href="/support.html">our support team can help</a>.</p>
-  {faqSections.map((section) => <section aria-labelledby={section.id}><h2 id={section.id}>{section.title}</h2><FAQ questions={section.questions} prefix="help" /></section>)}
+  <p class="faq-intro">Start with a simple explanation. Open a question for the details, from understanding your first birth chart to following a planetary period. If you need help with your account, <a href="/support.html">our support team can help</a>.</p>
+  {faqSections.map((section) => <section aria-labelledby={section.id}><h2 id={section.id}>{section.title}</h2><FAQ questions={section.questions} prefix="help" showDetails /></section>)}
 </DocumentLayout>
 <style>
   .faq-intro { margin-bottom: 35px; font-size: 15px; }
