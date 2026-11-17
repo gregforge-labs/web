@@ -76,7 +76,7 @@ The generated small assets are tracked, so ordinary builds do not need to regene
 
 `.github/workflows/deploy.yml` validates pull requests to `main`. A push to `main` builds and deploys the `dist/` artifact. The workflow uses Node 24, the npm lockfile, static route checks, and browser tests before deployment.
 
-**One-time migration when releasing this redesign:** the existing Pages configuration serves `main` from `/` (legacy branch publishing). Switch the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions** before merging or deploying the new source layout. Confirm the custom domain remains `astrodyuti.com` and HTTPS stays enforced. Do not publish the source repository root as the website; the deployable output is `dist/`.
+**Production configuration:** Pages uses **GitHub Actions**, with the custom domain `astrodyuti.com` and HTTPS enforced. The migration from legacy `main`-branch root publishing was completed on November 17, 2026. Keep **Settings → Pages → Build and deployment → Source** set to **GitHub Actions**. Do not publish the source repository root as the website; the deployable output is `dist/`.
 
 The following public paths are retained because the app, app stores, or advertising platform may reference them:
 

@@ -35,4 +35,4 @@ These comparisons use the current local app and backend checkouts. Confirm their
 
 ## Release context
 
-The site is already live. This branch changes its build process from publishing files in the repository root to publishing a generated `dist/` artifact. Keep the domain, app-ads.txt seller record, app/store-linked page URLs, and HTTPS configuration intact. See the README for the one-time Pages source change and validation commands.
+The redesigned site went live on November 17, 2026. Production now publishes a generated `dist/` artifact through GitHub Actions. The domain, app-ads.txt seller record, app/store-linked page URLs, and HTTPS configuration were preserved. See the README for the current deployment configuration and validation commands.
