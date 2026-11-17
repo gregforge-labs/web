@@ -1,22 +1,23 @@
 ---
 import StoreLinks from '../StoreLinks.astro';
 import Icon from '../Icon.astro';
+import CelestialSeal from '../CelestialSeal.astro';
 import { plans } from '../../data/site';
 ---
 <section class="hero" aria-labelledby="hero-title">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><span></span>Rooted in Jyotish. Made for your everyday.</p>
+      <p class="eyebrow">Rooted in Jyotish. Made for your everyday.</p>
       <h1 id="hero-title">Your Vedic birth chart,<br /><em>made clear.</em></h1>
       <p class="hero-lede">Get to know your kundli. Find perspective in your day. Ask the questions on your mind—with Vedic astrology that speaks your language.</p>
       <StoreLinks qr />
       <p class="hero-note">Free to start. Your first {plans.free.questions} Vani questions are on us.</p>
-      <div class="hero-facts"><span><Icon name="chart" size={15} />Your own birth chart</span><span><Icon name="globe" size={15} />Nine languages</span></div>
+      <div class="hero-facts"><span><Icon name="chart" size={18} />Your own birth chart</span><span><Icon name="globe" size={18} />Nine languages</span></div>
     </div>
     <div class="hero-visual">
       <svg class="orbit" viewBox="0 0 520 520" fill="none" aria-hidden="true"><circle cx="260" cy="260" r="238" /><circle cx="260" cy="260" r="203" stroke-dasharray="2 8" /><path d="M260 22v476M22 260h476M92 92l336 336M92 428 428 92" /><circle cx="260" cy="22" r="5" /><circle cx="22" cy="260" r="4" /><circle cx="428" cy="428" r="4" /></svg>
       <div class="phone-frame"><img src="/assets/screens/astrodyuti-home.webp" alt="An example AstroDyuti home screen with a personal reading and current-hour timing" width="640" height="1392" fetchpriority="high" /></div>
-      <div class="hero-caption"><span class="caption-mark"><Icon name="spark" size={19} /></span><div><strong>A little more perspective.</strong><span>From your chart to your everyday.</span></div></div>
+      <div class="hero-caption"><span class="caption-mark"><CelestialSeal motif="compass" size={48} /></span><div><strong>A little more perspective.</strong><span>From your chart to your everyday.</span></div></div>
       <span class="image-label">A look inside AstroDyuti</span>
     </div>
   </div>
@@ -25,8 +26,7 @@ import { plans } from '../../data/site';
   .hero { overflow: clip; padding-block: 64px 66px; }
   .hero-grid { display: grid; grid-template-columns: 1.3fr .85fr; gap: 55px; align-items: center; }
   .hero-copy { padding-bottom: 10px; }
-  .hero-copy .eyebrow { display: flex; gap: 9px; align-items: center; font-size: 10px; }
-  .eyebrow > span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+  .hero-copy .eyebrow { font-size: 19px; gap: 11px; margin-bottom: 23px; }
   h1 { font-size: clamp(3.5rem, 5.2vw, 4.75rem); line-height: 1.01; }
   h1 em { color: var(--green); }
   .hero-lede { max-width: 485px; margin: 26px 0 30px; color: var(--muted); font-size: 16px; line-height: 1.9; }
@@ -38,13 +38,13 @@ import { plans } from '../../data/site';
   .orbit { position: absolute; width: 490px; max-width: none; top: 30px; left: 50%; transform: translateX(-50%); stroke: #d3c7a6; stroke-width: .7; z-index: -1; }
   .phone-frame { width: 255px; overflow: hidden; border: 8px solid #303129; border-radius: 39px; background: var(--paper); box-shadow: 0 26px 45px -20px #383f394d, 1px 1px 0 1px #666453; transform: rotate(4deg); }
   .phone-frame img { display: block; width: 100%; }
-  .hero-caption { position: absolute; left: -12px; bottom: 60px; display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--surface); border: 1px solid #e4dfd2; border-radius: 12px; box-shadow: 0 10px 35px -12px #36392f30; }
-  .caption-mark { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: var(--gold); background: #f3eddf; border-radius: 50%; }
+  .hero-caption { position: absolute; left: -12px; bottom: 60px; display: flex; align-items: center; gap: 14px; max-width: 355px; padding: 15px 20px 15px 15px; background: var(--surface); border: 1px solid #ddd6c5; border-radius: 12px; box-shadow: 0 2px 3px #fff inset, 0 12px 35px -16px #36392f40; }
+  .caption-mark { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex-shrink: 0; color: var(--gold); filter: drop-shadow(0 1px 0 #fff); }
   .hero-caption strong, .hero-caption span:not(.caption-mark) { display: block; }
-  .hero-caption strong { font-size: 12px; font-weight: 550; }
-  .hero-caption div > span { margin-top: 2px; color: var(--muted); font-size: 10px; }
+  .hero-caption strong { font-family: var(--display); font-size: 21px; font-weight: 500; line-height: 1.15; letter-spacing: -.025em; }
+  .hero-caption div > span { margin-top: 6px; color: var(--muted); font-size: 10px; line-height: 1.5; }
   .image-label { position: absolute; right: 3px; top: 50%; color: var(--muted); font-size: 8px; letter-spacing: .13em; text-transform: uppercase; writing-mode: vertical-rl; }
   @media (max-width: 1000px) { .hero-grid { gap: 24px; grid-template-columns: 1.2fr .8fr; } h1 { font-size: 58px; } .hero-caption { left: -25px; padding: 13px; } .phone-frame { width: 230px; } .image-label { display: none; } }
-  @media (max-width: 760px) { .hero { padding-block: 40px 36px; } .hero-grid { grid-template-columns: 1fr; gap: 35px; } h1 { max-width: 580px; font-size: clamp(43px, 8vw, 60px); } .hero-lede { margin: 22px 0 25px; font-size: 15px; } .hero-copy .eyebrow { font-size: 8px; } .hero-facts { margin-top: 22px; } .hero-visual { padding-bottom: 24px; } .phone-frame { width: 220px; transform: rotate(3deg); } .orbit { width: 390px; top: 0; } .hero-caption { left: calc(50% - 150px); bottom: 35px; padding: 13px 16px; } }
-  @media (max-width: 380px) { h1 { font-size: 42px; } .hero-lede { font-size: 14px; } .hero-copy .eyebrow { font-size: 7px; letter-spacing: .12em; } .hero-caption { left: 0; } }
+  @media (max-width: 760px) { .hero { padding-block: 40px 36px; } .hero-grid { grid-template-columns: 1fr; gap: 35px; } h1 { max-width: 580px; font-size: clamp(43px, 8vw, 60px); } .hero-lede { margin: 22px 0 25px; font-size: 15px; } .hero-copy .eyebrow { max-width: 370px; font-size: 18px; } .hero-facts { margin-top: 22px; } .hero-visual { padding-bottom: 24px; } .phone-frame { width: 220px; transform: rotate(3deg); } .orbit { width: 390px; top: 0; } .hero-caption { width: max-content; max-width: calc(100% - 12px); left: 50%; transform: translateX(-50%); bottom: 35px; padding: 13px 16px 13px 12px; gap: 12px; } .hero-caption strong { font-size: 20px; } }
+  @media (max-width: 380px) { h1 { font-size: 42px; } .hero-lede { font-size: 14px; } .hero-copy .eyebrow { font-size: 17px; } .hero-caption strong { font-size: 18px; } .caption-mark { width: 42px; height: 42px; } }
 </style>

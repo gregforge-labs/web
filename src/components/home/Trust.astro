@@ -1,22 +1,22 @@
 ---
-import Icon from '../Icon.astro';
+import CelestialSeal from '../CelestialSeal.astro';
 ---
 <section class="section" aria-labelledby="trust-title">
   <div class="container">
     <div class="section-heading centered"><p class="eyebrow">Care in the details</p><h2 id="trust-title">An old tradition.<br />A thoughtful approach.</h2></div>
     <div class="trust-grid">
-      <div><Icon name="chart" size={25} /><h3>Astronomy at the foundation</h3><p>Planetary positions calculated with Swiss Ephemeris. Classical Jyotish methods bring those calculations into a reading you can follow.</p><a href="/licenses.html">About the calculations</a></div>
-      <div><Icon name="sun" size={27} /><h3>Perspective, with room for you</h3><p>Explore patterns and possibilities. Every reading is an invitation to reflect, with your experience and choices at the center.</p><a href="/disclaimer.html">How to use the readings</a></div>
-      <div><Icon name="spark" size={27} /><h3>Clear about your data</h3><p>Phone-number sign-in, accessible account deletion, and a privacy policy that explains what is stored and how Vani processes your questions.</p><a href="/privacy.html">Your privacy & choices</a></div>
+      <div><CelestialSeal motif="orrery" size={60} /><h3>Astronomy at the foundation</h3><p>Planetary positions calculated with Swiss Ephemeris. Classical Jyotish methods bring those calculations into a reading you can follow.</p><a href="/licenses.html">About the calculations</a></div>
+      <div><CelestialSeal motif="sun" size={60} /><h3>Perspective, with room for you</h3><p>Explore patterns and possibilities. Every reading is an invitation to reflect, with your experience and choices at the center.</p><a href="/disclaimer.html">How to use the readings</a></div>
+      <div><CelestialSeal motif="shield" size={60} /><h3>Clear about your data</h3><p>Phone-number sign-in, accessible account deletion, and a privacy policy that explains what is stored and how Vani processes your questions.</p><a href="/privacy.html">Your privacy & choices</a></div>
     </div>
   </div>
 </section>
 <style>
   .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; margin-top: 50px; }
   .trust-grid > div { padding-top: 25px; border-top: 1px solid var(--line); }
-  .trust-grid svg { margin-bottom: 24px; color: var(--gold); }
+  .trust-grid :global(.celestial-seal) { margin-bottom: 25px; color: var(--gold); filter: drop-shadow(0 1px 0 #fff); }
   h3 { font-size: 26px; letter-spacing: -.02em; }
   .trust-grid p { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.95; }
   .trust-grid a { display: inline-block; margin-top: 18px; font-size: 12px; }
-  @media (max-width: 760px) { .trust-grid { grid-template-columns: 1fr; gap: 32px; margin-top: 32px; } .trust-grid > div { padding-top: 22px; } .trust-grid svg { margin-bottom: 18px; } h3 { font-size: 25px; } .trust-grid p { margin-top: 12px; } }
+  @media (max-width: 760px) { .trust-grid { grid-template-columns: 1fr; gap: 32px; margin-top: 32px; } .trust-grid > div { padding-top: 22px; } .trust-grid :global(.celestial-seal) { width: 54px; height: 54px; margin-bottom: 20px; } h3 { font-size: 25px; } .trust-grid p { margin-top: 12px; } }
 </style>

@@ -1,9 +1,10 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import StoreLinks from '../components/StoreLinks.astro';
+import Icon from '../components/Icon.astro';
 ---
 <SiteLayout title="Get AstroDyuti for iPhone & Android" description="Download AstroDyuti from the App Store or Google Play. Explore your Vedic birth chart, daily timing, and Vani AI." noindex>
-  <section class="get-page container"><p class="eyebrow">A little perspective, in your pocket</p><h1>Your chart.<br /><em>Your next chapter.</em></h1><p>Get AstroDyuti for iPhone or Android.<br />Free to start, with optional Pro and Max plans.</p><StoreLinks /><span class="get-note">Choose your store to see availability and device requirements.</span><a href="/" class="text-link">Take a look inside first →</a></section>
+  <section class="get-page container"><p class="eyebrow eyebrow-centered">A little perspective, in your pocket</p><h1>Your chart.<br /><em>Your next chapter.</em></h1><p>Get AstroDyuti for iPhone or Android.<br />Free to start, with optional Pro and Max plans.</p><StoreLinks /><span class="get-note">Choose your store to see availability and device requirements.</span><a href="/" class="text-link">Take a look inside first<Icon size={16} /></a></section>
 </SiteLayout>
 <script>
   if (!new URLSearchParams(location.search).has('choose')) {

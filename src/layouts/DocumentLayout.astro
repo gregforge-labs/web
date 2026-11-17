@@ -1,12 +1,13 @@
 ---
 import SiteLayout from './SiteLayout.astro';
+import Icon from '../components/Icon.astro';
 interface Props { title: string; description: string; updated?: string; category?: string; toc?: { id: string; title: string }[] }
 const { title, description, updated, category = 'Help & support', toc = [] } = Astro.props;
 const updatedLabel = updated ? new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${updated}T12:00:00Z`)) : undefined;
 ---
 <SiteLayout title={`${title} — AstroDyuti`} description={description}>
   <div class="container document-heading">
-    <a class="back-link" href="/">← Back to AstroDyuti</a>
+    <a class="back-link" href="/"><Icon size={15} />Back to AstroDyuti</a>
     <p class="eyebrow">{category}</p>
     <h1>{title}</h1>
     {updatedLabel && <p class="document-meta">Last updated <time datetime={updated}>{updatedLabel}</time></p>}
