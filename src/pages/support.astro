@@ -1,0 +1,36 @@
+---
+import DocumentLayout from '../layouts/DocumentLayout.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+const emailLink = `mailto:${site.email}?subject=${encodeURIComponent('AstroDyuti Support')}`;
+---
+<DocumentLayout title="A little help, when you need it." description="Contact AstroDyuti support for help with sign-in, Vani, purchases, notifications, and account deletion." category="Support & contact">
+  <p class="support-lede">Questions about the app? Trouble with a purchase? We’re here to help you find the next step.</p>
+  <div class="support-contact"><div><span class="eyebrow">Get in touch</span><a href={emailLink}>{site.email}</a><p>We review support requests in English and respond as soon as reasonably possible.</p></div><Icon name="mail" size={36} /></div>
+  <h2 id="quick-help">Find a quick answer</h2>
+  <div class="support-options">
+    <a href="/faq.html"><strong>Getting started & using the app</strong><span>Birth charts, timing, Vani, languages, and more.</span><Icon size={17} /></a>
+    <a href="/refund.html"><strong>Subscriptions & purchases</strong><span>Restore access, manage a plan, or request a refund.</span><Icon size={17} /></a>
+    <a href="/delete-account.html"><strong>Delete your account</strong><span>In-app deletion and email-assisted requests.</span><Icon size={17} /></a>
+    <a href="/privacy.html"><strong>Your data & privacy</strong><span>What we store, our providers, and your choices.</span><Icon size={17} /></a>
+  </div>
+  <h2 id="what-to-include">Help us understand the issue</h2>
+  <p>Include your device platform (iPhone or Android), app version, the feature involved, and a short description of what happened. If there’s an error message, include its text or a screenshot with personal details hidden.</p>
+  <p>For login or account-specific issues, we may ask for the phone number associated with your account through the support conversation. Send only the information needed for the request.</p>
+  <div class="callout"><p><strong>Keep private details private.</strong> Never send a password, verification code, payment-card number, private key, or sensitive birth details. Store billing and refunds are handled under the policies of Apple or Google Play.</p></div>
+  <p>For accessibility barriers, tell us your device, assistive technology, and the step that did not work. See our <a href="/accessibility.html">Accessibility Statement</a>.</p>
+</DocumentLayout>
+<style>
+  .support-lede { font-size: 18px; color: var(--muted); }
+  .support-contact { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px; margin-top: 30px; border: 1px solid var(--line); border-radius: 14px; background: #eeeee2; }
+  .support-contact .eyebrow { margin-bottom: 12px; }
+  .support-contact a { font-size: 20px; font-weight: 500; letter-spacing: -.03em; }
+  .support-contact p { margin: 12px 0 0; max-width: 430px; color: var(--muted); font-size: 13px; }
+  .support-contact > svg { flex-shrink: 0; color: var(--green); }
+  .support-options { border-top: 1px solid var(--line); }
+  .support-options a { position: relative; display: block; padding: 22px 30px 22px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .support-options strong { display: block; font-size: 15px; font-weight: 500; }
+  .support-options span { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; }
+  .support-options svg { position: absolute; right: 0; top: 30px; }
+  @media (max-width: 760px) { .support-contact { padding: 24px 20px; } .support-contact a { font-size: 16px; } .support-contact > svg { display: none; } }
+</style>

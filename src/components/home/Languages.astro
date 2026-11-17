@@ -1,0 +1,24 @@
+---
+import { languages } from '../../data/site';
+---
+<section id="languages" class="languages-section" aria-labelledby="languages-title">
+  <div class="container languages-grid">
+    <div><p class="eyebrow">Familiar words. Personal meaning.</p><h2 id="languages-title">In the language<br /><em>you think in.</em></h2><p class="languages-lede">Read your chart and talk with Vani in English or one of eight Indian languages. Follow your city’s timing, wherever you call home.</p></div>
+    <ul class="language-list" aria-label="Supported reading languages">{languages.map((language) => <li><span lang={language.code} class="native-name">{language.native}</span><span class="language-name">{language.name}</span></li>)}</ul>
+  </div>
+</section>
+<style>
+  .languages-section { padding-block: 64px; border-block: 1px solid var(--line); background: #f0eee3; }
+  .languages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  h2 { font-size: 48px; }
+  h2 em { color: var(--green); }
+  .languages-lede { max-width: 390px; margin-top: 22px; color: var(--muted); font-size: 15px; line-height: 1.9; }
+  .language-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 0; margin: 0; list-style: none; }
+  .language-list li { min-height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px 4px; border-bottom: 1px solid #d6d8c9; }
+  .language-list li:nth-last-child(-n+3) { border-bottom: 0; }
+  .native-name { font-family: var(--display), 'Nirmala UI', sans-serif; font-size: 23px; line-height: 1.6; }
+  .native-name:not([lang='en']) { font-family: 'Kohinoor Devanagari', 'Kohinoor Telugu', 'Kohinoor Bangla', 'Nirmala UI', sans-serif; font-size: 20px; }
+  .language-name { margin-top: 6px; color: var(--muted); font-size: 11px; }
+  @media (max-width: 1000px) { .languages-grid { gap: 48px; } }
+  @media (max-width: 760px) { .languages-section { padding-block: 50px; } .languages-grid { grid-template-columns: 1fr; gap: 30px; } h2 { font-size: 40px; } .languages-lede { font-size: 14px; } .language-list { max-width: 480px; } .native-name:not([lang='en']) { font-size: 18px; } }
+</style>

@@ -1,0 +1,11 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+<SiteLayout title="Page not found — AstroDyuti" description="Find your way back to AstroDyuti." noindex canonical="/">
+  <section class="container not-found"><p class="eyebrow">404 · A small detour</p><h1>Let’s find<br /><em>your way back.</em></h1><p>This page may have moved, or the link may be incomplete.</p><div class="actions"><a class="button" href="/">Back to AstroDyuti</a><a class="button secondary" href="/support.html">Get help</a></div></section>
+</SiteLayout>
+<style>
+  .not-found { padding-block: 80px; min-height: 60vh; }
+  .not-found > p:not(.eyebrow) { margin-top: 25px; color: var(--muted); font-size: 14px; }
+  h1 em { color: var(--green); }
+</style>

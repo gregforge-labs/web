@@ -1,0 +1,31 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import ProductTour from '../components/home/ProductTour.astro';
+import Vani from '../components/home/Vani.astro';
+import Trust from '../components/home/Trust.astro';
+import Languages from '../components/home/Languages.astro';
+import Plans from '../components/home/Plans.astro';
+import Closing from '../components/home/Closing.astro';
+import FAQ from '../components/FAQ.astro';
+import Icon from '../components/Icon.astro';
+import { homepageFaqs } from '../data/faq';
+---
+<SiteLayout title="AstroDyuti — Your Vedic birth chart, made clear" canonical="/" home>
+  <Hero />
+  <ProductTour />
+  <Vani />
+  <Trust />
+  <Languages />
+  <Plans />
+  <section id="faq" class="section home-faq" aria-labelledby="faq-title"><div class="container faq-grid"><div><p class="eyebrow">A few things to know</p><h2 id="faq-title">Before<br /><em>you begin.</em></h2><p>Curious about something else?<br />We’ve answered more in our help pages.</p><a class="text-link" href="/faq.html">All your questions<Icon size={16} /></a></div><FAQ questions={homepageFaqs} /></div></section>
+  <Closing />
+</SiteLayout>
+<style>
+  .home-faq { border-top: 1px solid var(--line); }
+  .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
+  .faq-grid > div > p:not(.eyebrow) { margin-top: 22px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+  .faq-grid .text-link { margin-top: 20px; font-size: 13px; }
+  h2 em { color: var(--green); }
+  @media (max-width: 760px) { .faq-grid { grid-template-columns: 1fr; gap: 28px; } h2 br { display: none; } .faq-grid > div > p:not(.eyebrow) { margin-top: 16px; } }
+</style>

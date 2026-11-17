@@ -1,0 +1,20 @@
+---
+import type { MarkdownInstance } from 'astro';
+import DocumentLayout from '../layouts/DocumentLayout.astro';
+
+interface Metadata { title: string; description: string; updated: string; category: string }
+export function getStaticPaths() {
+  const modules = import.meta.glob<MarkdownInstance<Metadata>>('../content/documents/*.md', { eager: true });
+  const sources = import.meta.glob<string>('../content/documents/*.md', { query: '?raw', import: 'default', eager: true });
+  return Object.entries(modules).map(([path, document]) => {
+    const slug = path.split('/').pop()!.replace(/\.md$/, '');
+    const toc = Array.from(sources[path].matchAll(/<h2\s+id="([^"]+)"[^>]*>(.*?)<\/h2>/gs)).map((match) => ({
+      id: match[1], title: match[2].replace(/<[^>]+>/g, '').replace(/^\d+[a-z]?\.\s*/, '').replace(/&amp;/g, '&'),
+    }));
+    return { params: { document: slug }, props: { document, toc } };
+  });
+}
+const { document, toc } = Astro.props;
+const Content = document.Content;
+---
+<DocumentLayout {...document.frontmatter} toc={toc}><Content /></DocumentLayout>

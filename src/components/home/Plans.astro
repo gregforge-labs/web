@@ -1,0 +1,44 @@
+---
+import { plans } from '../../data/site';
+import Icon from '../Icon.astro';
+const cards = [
+  { ...plans.free, id: 'free', label: 'Start exploring', tagline: 'Get to know your chart.', allowance: `${plans.free.questions} Vani questions`, period: 'Lifetime introductory allowance', features: ['Daily reading, Birth Snapshot & panchang', 'Rewarded-ad access to eligible chapters', 'Some advanced chapters require Pro or Max', `${plans.free.profiles} chart profile`], button: 'Start for free' },
+  { ...plans.pro, id: 'pro', label: 'More room to explore', tagline: 'Make it part of your day.', allowance: `${plans.pro.questions} Vani questions`, period: `Per calendar month · up to ${plans.pro.daily} a day`, features: ['Every chapter open, including advanced methods', 'An ad-free experience', `${plans.pro.profiles} chart profiles`, `${plans.pro.savedChats} saved chats · ${plans.pro.historyDays}-day history`], button: 'Explore Pro' },
+  { ...plans.max, id: 'max', label: 'For a closer look', tagline: 'Go deeper. Bring family.', allowance: `${plans.max.questions} Vani questions`, period: `Per calendar month · up to ${plans.max.daily} a day`, features: ['Every chapter open, including advanced methods', 'An ad-free experience', `${plans.max.profiles} chart profiles`, `${plans.max.savedChats} saved chats · unlimited history`], button: 'Explore Max' },
+];
+---
+<section id="plans" class="section plans-section" aria-labelledby="plans-title">
+  <div class="container">
+    <div class="section-heading centered"><p class="eyebrow">Begin with curiosity</p><h2 id="plans-title">Free to start.<br />More when you want it.</h2><p>Explore at your own pace. Pro and Max open every chapter, remove ads, and give you more room to talk with Vani.</p></div>
+    <div class="plans-grid">{cards.map((plan) => <article class:list={['plan-card', { featured: plan.id === 'pro' }]} aria-labelledby={`plan-${plan.id}`}>
+      <p class="plan-label">{plan.label}</p><h3 id={`plan-${plan.id}`}>{plan.name}</h3><p class="plan-tagline">{plan.tagline}</p>
+      <div class="plan-allowance"><strong>{plan.allowance}</strong><span>{plan.period}</span></div>
+      <ul>{plan.features.map((feature) => <li><Icon name="check" size={14} />{feature}</li>)}</ul>
+      <a class:list={['button', { secondary: plan.id !== 'pro' }]} href="/get.html">{plan.button}<Icon size={15} /></a>
+      <p class="purchase-label">{plan.id === 'free' ? 'No subscription required' : 'Monthly subscription · local price in app'}</p>
+    </article>)}</div>
+    <div class="plans-notes"><p>Local prices are shown before purchase in the app. Paid plans renew monthly until cancelled through your store. Vani allowances reset on UTC calendar boundaries.</p><p>Active subscribers can also buy one-time Vani credit packs. <a href="/refund.html">Subscription & refund details<Icon size={13} /></a></p></div>
+  </div>
+</section>
+<style>
+  .plans-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 45px; }
+  .plan-card { display: flex; flex-direction: column; padding: 30px 28px 23px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .plan-card.featured { background: #eeeee2; border-color: #a7b19b; }
+  .plan-label { color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+  .plan-card h3 { margin-top: 16px; font-size: 40px; }
+  .plan-tagline { margin-top: 8px; color: var(--muted); font-size: 13px; }
+  .plan-allowance { display: grid; gap: 5px; margin-top: 26px; padding-block: 19px; border-block: 1px solid var(--line); }
+  .plan-allowance strong { font-size: 20px; font-weight: 500; letter-spacing: -.02em; }
+  .plan-allowance span { color: var(--muted); font-size: 11px; }
+  .plan-card ul { display: grid; gap: 13px; padding: 0; margin: 24px 0 28px; list-style: none; flex: 1; }
+  .plan-card li { display: flex; align-items: baseline; gap: 9px; color: #51584a; font-size: 12px; line-height: 1.8; }
+  .plan-card li svg { flex-shrink: 0; color: var(--green); align-self: flex-start; margin-top: 2px; }
+  .plan-card .button { font-size: 13px; }
+  .purchase-label { margin-top: 11px; color: var(--muted); font-size: 10px; text-align: center; }
+  .plans-notes { max-width: 700px; margin: 24px auto 0; color: var(--muted); font-size: 12px; line-height: 1.9; text-align: center; }
+  .plans-notes p + p { margin-top: 7px; }
+  .plans-notes a { color: var(--ink); }
+  .plans-notes svg { margin-left: 5px; }
+  @media (max-width: 1000px) { .plan-card { padding: 26px 20px 22px; } }
+  @media (max-width: 760px) { .plans-grid { grid-template-columns: 1fr; gap: 16px; max-width: 480px; margin: 32px auto 0; } .plan-card { padding: 26px; } .plan-card h3 { font-size: 37px; } .plan-card ul { gap: 10px; } .plan-card li { font-size: 13px; } .plan-label, .purchase-label { font-size: 11px; } .plan-allowance span { font-size: 12px; } .plans-notes { text-align: left; margin-top: 22px; } }
+</style>

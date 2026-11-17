@@ -1,0 +1,25 @@
+---
+import StoreLinks from '../StoreLinks.astro';
+---
+<section class="closing-section" id="get" aria-labelledby="closing-title">
+  <div class="container closing-inner">
+    <p class="eyebrow">Your next chapter starts with you</p>
+    <h2 id="closing-title">Get to know<br /><em>your own chart.</em></h2>
+    <p>Start with your birth details.<br />See where your curiosity takes you.</p>
+    <StoreLinks />
+    <span class="closing-note">Free to start on iPhone and Android.</span>
+  </div>
+</section>
+<div class="container site-disclosure"><p><strong>Swiss Ephemeris Inside.</strong> Astronomical calculations use Swiss Ephemeris under a commercial Professional Edition license held by Gregforge Labs LLC.</p><p>AstroDyuti offers traditional astrology for reflection and education. Readings are not guaranteed predictions or professional advice. For adults 18 and over. <a href="/disclaimer.html">Read the disclaimer.</a></p></div>
+<style>
+  .closing-section { padding-block: 65px; background: #e9eddf; border-block: 1px solid #d7ddcc; }
+  .closing-inner { text-align: center; }
+  h2 { font-size: clamp(46px, 5vw, 65px); }
+  h2 em { color: var(--green); }
+  .closing-inner > p:not(.eyebrow) { margin-top: 22px; color: var(--muted); font-size: 15px; line-height: 1.9; }
+  .closing-inner :global(.download-links) { justify-content: center; margin-top: 28px; }
+  .closing-note { display: block; margin-top: 16px; color: var(--muted); font-size: 12px; }
+  .site-disclosure { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; padding-block: 28px; color: var(--muted); font-size: 11px; line-height: 1.85; }
+  .site-disclosure strong { font-weight: 600; }
+  @media (max-width: 760px) { .closing-section { padding-block: 52px; } .site-disclosure { grid-template-columns: 1fr; gap: 12px; padding-block: 24px; } }
+</style>

@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+const links = [
+  { label: 'The app', href: '/#inside' },
+  { label: 'Vani', href: '/#vani' },
+  { label: 'Plans', href: '/#plans' },
+  { label: 'FAQ', href: '/faq.html' },
+  { label: 'Support', href: '/support.html' },
+];
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AstroDyuti home">
+      <img src="/assets/brand-icon.webp" width="38" height="38" alt="" />
+      <span>AstroDyuti</span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <div class="desktop-nav">{links.map((link) => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</div>
+      <details class="mobile-menu">
+        <summary aria-label="Navigation menu"><Icon name="menu" /><span class="sr-only">Menu</span></summary>
+        <div class="mobile-menu-panel">
+          <span class="eyebrow">Explore AstroDyuti</span>
+          {links.map((link) => <a href={link.href}>{link.label}<Icon size={16} /></a>)}
+          <a href="/#languages">Languages<Icon size={16} /></a>
+        </div>
+      </details>
+      <a class="button button-small" href="/get.html">Get the app<Icon size={15} /></a>
+    </nav>
+  </div>
+</header>
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.mobile-menu').forEach((menu) => {
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.open = false; }));
+    menu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
+  });
+</script>

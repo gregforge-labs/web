@@ -1,0 +1,47 @@
+---
+import Icon from '../Icon.astro';
+import { plans } from '../../data/site';
+---
+<section id="vani" class="vani-section" aria-labelledby="vani-title">
+  <div class="container vani-grid">
+    <div class="vani-copy">
+      <p class="eyebrow">A conversation with your chart</p>
+      <h2 id="vani-title">You have questions.<br /><em>Meet Vani.</em></h2>
+      <p class="vani-lede">Your AI astrology guide, with your birth chart as the starting point. Ask in your own words and explore the Jyotish factors behind the reading.</p>
+      <ul class="question-examples" aria-label="Examples of questions you can ask">
+        <li><Icon name="spark" size={15} />Which planetary period am I in?</li>
+        <li><Icon name="spark" size={15} />What are the main strengths in my chart?</li>
+        <li><Icon name="spark" size={15} />What should I pay attention to this month?</li>
+      </ul>
+      <a class="button light" href="/get.html">Ask your first question<Icon size={16} /></a>
+      <p class="vani-note">{plans.free.questions} questions free to start. Available in all nine languages.</p>
+      <p class="ai-note">Vani is AI and can make mistakes. A companion for reflection, with your judgment at the center.</p>
+    </div>
+    <figure class="vani-visual">
+      <div class="vani-orbit" aria-hidden="true"></div>
+      <div class="vani-phone"><img src="/assets/screens/astrodyuti-vani.webp" alt="Vani in the AstroDyuti app, showing suggested questions and a chart-based chat input" width="640" height="1392" loading="lazy" /></div>
+      <figcaption>Your questions. Your chart. Your language.</figcaption>
+    </figure>
+  </div>
+</section>
+<style>
+  .vani-section { overflow: clip; padding-block: 76px; color: var(--paper); background: var(--navy); }
+  .vani-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 80px; }
+  .eyebrow { color: var(--gold-light); }
+  h2 { color: var(--paper); font-size: clamp(44px, 4vw, 60px); }
+  h2 em { color: var(--gold-light); }
+  .vani-lede { max-width: 450px; margin-top: 24px; color: #c5ced6; font-size: 16px; line-height: 1.9; }
+  .question-examples { padding: 0; margin: 26px 0 30px; list-style: none; }
+  .question-examples li { display: flex; align-items: center; gap: 12px; padding-block: 11px; border-bottom: 1px solid #ffffff1f; color: #e0e4e7; font-size: 13px; }
+  .question-examples svg { flex-shrink: 0; color: var(--gold-light); }
+  .vani-note { margin-top: 14px; color: #c5ced6; font-size: 12px; }
+  .ai-note { max-width: 410px; margin-top: 28px; color: #aebcce; font-size: 12px; line-height: 1.8; }
+  .vani-visual { position: relative; justify-self: center; text-align: center; }
+  .vani-orbit { position: absolute; left: 50%; top: 50%; width: 400px; height: 400px; transform: translate(-50%, -50%); border: 1px solid #dec48a35; border-radius: 50%; }
+  .vani-orbit::before { position: absolute; content: ''; inset: 22px; border: 1px dashed #dec48a25; border-radius: 50%; }
+  .vani-phone { position: relative; overflow: hidden; width: 232px; border: 7px solid #101c2c; border-radius: 34px; box-shadow: 0 24px 40px #00000038; transform: rotate(-4deg); }
+  .vani-phone img { display: block; }
+  figcaption { margin-top: 28px; color: #aebcce; font-size: 11px; }
+  @media (max-width: 1000px) { .vani-grid { gap: 40px; } }
+  @media (max-width: 760px) { .vani-section { padding-block: 55px; } .vani-grid { grid-template-columns: 1fr; gap: 46px; } h2 { font-size: 43px; } .vani-lede { font-size: 15px; } .vani-phone { width: 200px; } .vani-orbit { width: 320px; height: 320px; } .question-examples li { font-size: 12px; } .ai-note { max-width: 310px; } }
+</style>

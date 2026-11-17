@@ -1,0 +1,25 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import StoreLinks from '../components/StoreLinks.astro';
+---
+<SiteLayout title="Get AstroDyuti for iPhone & Android" description="Download AstroDyuti from the App Store or Google Play. Explore your Vedic birth chart, daily timing, and Vani AI." noindex>
+  <section class="get-page container"><p class="eyebrow">A little perspective, in your pocket</p><h1>Your chart.<br /><em>Your next chapter.</em></h1><p>Get AstroDyuti for iPhone or Android.<br />Free to start, with optional Pro and Max plans.</p><StoreLinks /><span class="get-note">Choose your store to see availability and device requirements.</span><a href="/" class="text-link">Take a look inside first →</a></section>
+</SiteLayout>
+<script>
+  if (!new URLSearchParams(location.search).has('choose')) {
+    const ua = navigator.userAgent;
+    const platform = /android/i.test(ua) ? 'android' : /iPad|iPhone|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'ios' : null;
+    if (platform) {
+      const link = document.querySelector<HTMLAnchorElement>(`[data-store="${platform}"]`);
+      if (link) location.replace(link.href);
+    }
+  }
+</script>
+<style>
+  .get-page { min-height: 62vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-block: 70px; text-align: center; }
+  h1 { font-size: clamp(48px, 6vw, 76px); }
+  h1 em { color: var(--green); }
+  .get-page > p:not(.eyebrow) { margin-block: 26px 30px; color: var(--muted); font-size: 15px; }
+  .get-note { margin-block: 20px 25px; color: var(--muted); font-size: 12px; }
+  .text-link { font-size: 13px; }
+</style>
