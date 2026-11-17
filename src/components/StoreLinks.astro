@@ -1,0 +1,12 @@
+---
+import { site } from '../data/site';
+interface Props { qr?: boolean }
+const { qr = false } = Astro.props;
+---
+<div class="download-links">
+  <div class="store-badges">
+    <a href={site.stores.ios} data-store="ios"><img src="/assets/badge-app-store.svg" alt="Download AstroDyuti on the App Store" width="181" height="54" /></a>
+    <a href={site.stores.android} data-store="android"><img src="/assets/badge-google-play.svg" alt="Get AstroDyuti on Google Play" width="182" height="54" /></a>
+  </div>
+  {qr && <a class="qr-link" href="/get.html"><img src="/assets/qr-get.svg" alt="Scan to choose your app store" width="60" height="60" /><span>Scan to<br />get the app</span></a>}
+</div>

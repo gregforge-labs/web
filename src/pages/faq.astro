@@ -1,0 +1,14 @@
+---
+import DocumentLayout from '../layouts/DocumentLayout.astro';
+import FAQ from '../components/FAQ.astro';
+import { faqSections } from '../data/faq';
+---
+<DocumentLayout title="Your questions, answered." description="Help with AstroDyuti: birth charts, daily timing, Vani AI, compatibility, plans, purchases, privacy, and account deletion." category="AstroDyuti help" toc={faqSections.map((section) => ({ id: section.id, title: section.title }))}>
+  <p class="faq-intro">A little help getting started, and clear answers for the details along the way. If you need a hand with your account, <a href="/support.html">our support team can help</a>.</p>
+  {faqSections.map((section) => <section aria-labelledby={section.id}><h2 id={section.id}>{section.title}</h2><FAQ questions={section.questions} prefix="help" /></section>)}
+</DocumentLayout>
+<style>
+  .faq-intro { margin-bottom: 35px; font-size: 15px; }
+  section + section { margin-top: 44px; }
+  h2 { border-top: 0; padding-top: 0; margin: 0 0 22px; font-size: 33px; }
+</style>

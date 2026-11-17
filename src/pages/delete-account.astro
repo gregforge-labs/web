@@ -1,0 +1,37 @@
+---
+import DocumentLayout from '../layouts/DocumentLayout.astro';
+import { site } from '../data/site';
+const deletionLink = `mailto:${site.email}?subject=${encodeURIComponent('AstroDyuti Account Deletion Request')}&body=${encodeURIComponent('Please delete my AstroDyuti account and associated data.\n\nAccount phone number (including country code):\n')}`;
+const toc = [
+  { id: 'how-to-request-deletion', title: 'Request deletion' },
+  { id: 'what-is-deleted', title: 'What is removed' },
+  { id: 'your-subscription', title: 'Cancel your subscription' },
+  { id: 'local-data-on-your-device', title: 'Other devices' },
+  { id: 'timing', title: 'Timing & retention' },
+];
+---
+<DocumentLayout title="Account & data deletion" description="Delete your AstroDyuti account in the app, or request help by email. Includes subscriptions, local data, and retention details." category="Your account" updated="2026-11-17" toc={toc}>
+  <p>You can request permanent deletion of your AstroDyuti account and the associated data we control. The quickest route is in the app. If you cannot access it, use the email option below.</p>
+  <h2 id="how-to-request-deletion">Request deletion</h2>
+  <ol class="deletion-steps"><li>Open AstroDyuti and go to <strong>Settings</strong>.</li><li>Choose <strong>Delete Account</strong>.</li><li>Complete phone verification and confirm deletion. Keep the app open until it confirms the request has completed.</li></ol>
+  <div class="callout"><p><strong>Can’t access the app?</strong> Email us with the subject <strong>AstroDyuti Account Deletion Request</strong> and the phone number on your account, including its country code. We may ask for additional information to verify ownership. Never send a verification code.</p><div class="actions"><a class="button" href={deletionLink}>Email deletion support</a></div></div>
+  <h2 id="what-is-deleted">What is removed</h2>
+  <p>Once your request is verified and completed, deletion removes the account data we control, including:</p>
+  <ul><li>Your Firebase authentication account.</li><li>Saved profiles and birth-chart details in our account store.</li><li>Saved Vani conversations, usage records, and unused Vani credits.</li><li>Backend entitlement, credit-grant, and content-report records associated with the account.</li></ul>
+  <p>In-app deletion also clears local account data on the device where you complete it. Store purchase records and records held by independent service providers may be subject to their own retention requirements. Contact us if you need assistance with a provider-related privacy request; see the <a href="/privacy.html">Privacy Policy</a>.</p>
+  <h2 id="your-subscription">Cancel an active subscription separately</h2>
+  <p><strong>Account deletion does not cancel a subscription.</strong> Cancel it through the store to stop future renewals:</p>
+  <div class="actions"><a class="button secondary" href={site.subscriptions.ios}>Apple subscriptions</a><a class="button secondary" href={site.subscriptions.android}>Google Play subscriptions</a></div>
+  <p>Unused Vani credits cannot be restored after deletion. See <a href="/refund.html">Subscription &amp; Refund Terms</a>.</p>
+  <h2 id="local-data-on-your-device">Local data on other devices</h2>
+  <p>Deletion cannot remotely clear every local copy on another device. Remove local data there by clearing app data or uninstalling the app. An email-assisted deletion request does not itself clear data stored on your phone.</p>
+  <h2 id="timing">Timing &amp; retention</h2>
+  <p>In-app deletion normally completes during the verified deletion flow. If it fails, retry when connected or contact support. We aim to complete email-assisted requests within 7 days after verifying account ownership.</p>
+  <p>Limited records may be retained or de-identified for security, fraud prevention, disputes, tax, accounting, platform requirements, or legal obligations, as described in the <a href="/privacy.html">Privacy Policy</a>.</p>
+  <h2 id="contact">Need help?</h2><p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+</DocumentLayout>
+<style>
+  .deletion-steps { counter-reset: step; list-style: none; padding: 0; margin: 24px 0; }
+  .deletion-steps li { display: block; position: relative; min-height: 42px; padding: 8px 0 12px 48px; }
+  .deletion-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 5px; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; color: var(--gold); text-align: center; font-size: 12px; line-height: 28px; }
+</style>

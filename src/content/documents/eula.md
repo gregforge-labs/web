@@ -1,0 +1,73 @@
+---
+title: "End-User License Agreement"
+description: "End-User License Agreement for the AstroDyuti Vedic astrology mobile application by Gregforge Labs LLC."
+updated: "2026-08-05"
+category: "Policies & notices"
+---
+
+<p>This End-User License Agreement ("<strong>EULA</strong>") is a binding agreement between you and <strong>Gregforge Labs LLC</strong>, a California limited liability company ("<strong>Gregforge</strong>", "we", "our"), concerning the <strong>AstroDyuti</strong> mobile application (the "<strong>App</strong>"). This EULA supplements, and does not replace, the <a href="/terms.html">Terms of Service</a> which also apply to your use of the App.</p>
+
+
+
+<h2 id="1-license-grant">1. License Grant</h2>
+<p>Subject to your ongoing compliance with this EULA and the Terms of Service, Gregforge grants you a <strong>limited, personal, non-exclusive, non-transferable, non-sublicensable, revocable license</strong> to download, install, and use the App on devices you own or control, solely for your personal, non-commercial use. If you obtained the App from the Apple App Store, this license is limited to use on Apple-branded products that you own or control and as permitted by the Apple Media Services Terms and Conditions, including applicable Family Sharing, volume purchasing, and Legacy Contacts rules.</p>
+
+<h2 id="2-restrictions">2. Restrictions</h2>
+<p>You may <strong>not</strong>, and you may not permit anyone to:</p>
+<ul>
+  <li>copy, reproduce, modify, adapt, translate, or create derivative works of the App;</li>
+  <li>reverse-engineer, decompile, disassemble, or otherwise attempt to derive the source code, algorithms, or non-public APIs of the App, except to the extent this restriction is prohibited by applicable law;</li>
+  <li>rent, lease, sell, sublicense, distribute, assign, or otherwise transfer the App or rights to the App to any third party;</li>
+  <li>remove, alter, or obscure any proprietary notices (including copyright and trademark notices);</li>
+  <li>use the App to develop, train, evaluate, or benchmark a machine-learning model or competing product;</li>
+  <li>use the App in a manner that violates applicable law or the rights of any third party.</li>
+</ul>
+
+<h2 id="3-intellectual-property">3. Intellectual Property</h2>
+<p>The App and all related content — including software, text, graphics, icons, logos, interpretation templates, and the "AstroDyuti" and "Gregforge Labs" marks — are the property of Gregforge or its licensors and are protected by United States and international copyright, trademark, and other intellectual-property laws. This EULA grants you no rights to such property except the limited license described above.</p>
+
+<h2 id="4-updates">4. Updates</h2>
+<p>We may release updates to the App. Updates may add, modify, or remove features. Some updates may be required for continued use of the App and may be installed automatically by your device's operating system or app store. This EULA applies to all such updates unless a separate license accompanies them.</p>
+
+<h2 id="5-third-party-components">5. Third-Party Components</h2>
+<p>The App incorporates open-source libraries, commercially licensed software, and third-party services. A summary of components and their associated license notices is published at <a href="/licenses.html">Third-Party Notices &amp; Licenses</a>, and a complete machine-readable list is available on request at <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a>. Those components are licensed to you under their respective terms.</p>
+<p>You must comply with applicable third-party terms when using the App, including terms from the app store where you obtained the App, authentication providers, cloud providers, AI model providers, location/timezone providers, payment processors, diagnostics providers, subscription-management providers, advertising providers, and any network or data-service provider you use to access the App. These providers may change over time.</p>
+
+<h3>5.1 Swiss Ephemeris</h3>
+<p>The App includes the <strong>Swiss Ephemeris</strong> ("<strong>SWISS EPHEMERIS Inside</strong>") under a paid commercial Swiss Ephemeris Professional Edition license held by Gregforge Labs LLC. Copyright and proprietary notices contained in the Swiss Ephemeris source and data files are preserved by the App and may not be removed, modified, or obscured. No license to redistribute the Swiss Ephemeris library, in source or compiled form, is granted to you under this EULA; your license is limited to use of the App as a whole on devices you own or control. Reverse engineering the Swiss Ephemeris library or its data files, or extracting it for use outside the App, is prohibited.</p>
+
+<h2 id="6-warranty-disclaimer-limitation-of-liability">6. Warranty Disclaimer; Limitation of Liability</h2>
+<p>The App is provided "as is" and "as available", with all faults, and without warranty of any kind. Limitations on warranties and liability described in the <a href="/terms.html">Terms of Service</a> apply to this EULA with the same force and are incorporated here by reference.</p>
+
+<h2 id="7-export-compliance">7. Export Compliance</h2>
+<p>You agree that you will not export or re-export the App in violation of any applicable United States export-control laws, including the U.S. Export Administration Regulations, or the laws of any country in which the App is accessed. You represent that you are not located in, and are not a citizen or resident of, a country subject to a U.S. government embargo, and that you are not listed on any U.S. government list of prohibited or restricted parties.</p>
+
+<h2 id="8-u-s-government-end-users">8. U.S. Government End Users</h2>
+<p>The App is a "commercial item" as defined in 48 C.F.R. §2.101, consisting of "commercial computer software" and "commercial computer software documentation" as used in 48 C.F.R. §12.212 and 48 C.F.R. §227.7202. Government end users acquire the App with only those rights set forth in this EULA.</p>
+
+<h2 id="9-termination">9. Termination</h2>
+<p>This EULA is effective until terminated. It will terminate automatically if you fail to comply with any of its terms. Upon termination, you must cease using the App and delete all copies from your devices. Sections 3, 6, 7, 9, and 10 survive termination.</p>
+
+<h2 id="10-governing-law-dispute-resolution">10. Governing Law; Dispute Resolution</h2>
+<p>This EULA is governed by the laws of the State of California, United States, without regard to conflict-of-laws principles. The dispute-resolution, arbitration, and class-action-waiver provisions of the <a href="/terms.html">Terms of Service</a> apply to any dispute arising out of or relating to this EULA.</p>
+
+<h2 id="11-platform-specific-terms">11. Platform-Specific Terms</h2>
+
+<h3>11.1 Apple App Store</h3>
+<p>If you obtained the App from the Apple App Store, the following also applies:</p>
+<ul>
+  <li>This EULA is between you and Gregforge only, not with Apple. Apple is not responsible for the App or its content.</li>
+  <li>Apple has no obligation to provide maintenance or support services for the App.</li>
+  <li>In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple may refund the purchase price; to the maximum extent permitted by law, Apple has no other warranty obligation.</li>
+  <li>Apple is not responsible for addressing any claims by you or any third party relating to the App, including product-liability, legal/regulatory non-compliance, or consumer-protection claims.</li>
+  <li>In the event a third party claims the App infringes intellectual-property rights, Gregforge, not Apple, is solely responsible for the investigation, defense, settlement, and discharge of any such claim.</li>
+  <li>You represent and warrant that you are not located in a region subject to a U.S. government embargo or designated by the U.S. government as a terrorist-supporting region, and that you are not listed on any U.S. government list of prohibited or restricted parties.</li>
+  <li>Apple and Apple's subsidiaries are third-party beneficiaries of this EULA and may enforce it against you.</li>
+</ul>
+
+<h3>11.2 Google Play</h3>
+<p>If you obtained the App from Google Play, your use is also governed by the Google Play Terms of Service. To the extent of any conflict between this EULA and the Google Play Terms of Service in matters specifically addressed by Google Play (such as refunds and billing), the Google Play Terms of Service prevail.</p>
+
+<h2 id="12-contact">12. Contact</h2>
+<p>Developer: Gregforge Labs LLC. Questions, complaints, claims, or support requests: <a href="mailto:support@gregforgelabs.com">support@gregforgelabs.com</a></p>
+<p>Legal mail and service of process: Gregforge Labs LLC c/o ZenBusiness Inc., 2520 Venture Oaks Way Suite 120, Sacramento, CA 95833, United States.</p>

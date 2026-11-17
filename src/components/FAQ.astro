@@ -1,0 +1,8 @@
+---
+import type { Question } from '../data/faq';
+interface Props { questions: Question[]; prefix?: string }
+const { questions, prefix = 'question' } = Astro.props;
+---
+<div class="faq-list">
+  {questions.map((question) => <details id={`${prefix}-${question.id}`}><summary>{question.question}<span class="faq-symbol" aria-hidden="true"></span></summary><div class="faq-answer" set:html={question.answer} /></details>)}
+</div>
