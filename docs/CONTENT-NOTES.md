@@ -4,7 +4,7 @@ This redesign serves Indian users, the Indian diaspora, and readers who are new 
 
 ## Product facts
 
-- `src/data/site.ts` contains the website's shared plan allowances, supported languages, and store URLs. The product references checked for this revision are the companion mobile repository's `src/modules/billing/tiers.ts` and the backend's `src/usage.py`.
+- `src/data/site.ts` contains the website's shared plan allowances, supported languages, and store URLs. The product references checked for this revision are the companion mobile repository's `src/modules/billing/tiers.ts` and the backend's `src/jyotish_agent/billing/usage.py`.
 - Free: 3 lifetime Vani questions, 1 profile. Pro: 45 questions per calendar month, up to 5 per day, 5 profiles. Max: 120 per calendar month, up to 10 per day, 10 profiles. Paid quotas use UTC calendar boundaries, rather than the subscription renewal date.
 - Birth Snapshot, the daily reading, and the basic panchang are free. Eligible additional content can unlock with rewarded ads. Vastu, Kalachakra, Jaimini, Tajika, and KP are subscription chapters. Both paid plans remove ads.
 - Use `src/data/faq.ts` for answers that appear on both the homepage and help page. Do not create a second homepage copy of an FAQ answer.
@@ -13,7 +13,7 @@ This redesign serves Indian users, the Indian diaspora, and readers who are new 
 
 ## Factual corrections made in this revision
 
-- Privacy: removed the assertion that Free Vani history is only local. The current backend permits saved chats for Free users too (`api.py`, `src/usage.py`, and `src/chats.py`).
+- Privacy: removed the assertion that Free Vani history is only local. The current backend permits saved chats for Free users too (`src/jyotish_agent/app.py`, `src/jyotish_agent/billing/usage.py`, and `src/jyotish_agent/repositories/chats.py`).
 - Privacy: corrected the encrypted-local-store claim. The mobile app's `src/lib/storage.ts` initializes MMKV without an application encryption key. Device operating-system protections are distinguished from separate app-level encryption.
 - Advertising: reflected the current non-personalized rewarded-ad requests and the absence of an ATT prompt (`src/modules/ads/useRewardedAd.ts` and `app.config.js`).
 - Deletion: replaced a nonexistent web form with email-assisted instructions. Distinguished backend account deletion, local clearing on the current device, other-device data, provider retention, and store subscription cancellation. Removed the unsubstantiated promise of deleting a RevenueCat customer record: the current client logs out of RevenueCat; that is not the same as deleting its provider-side customer record.

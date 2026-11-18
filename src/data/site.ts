@@ -15,7 +15,7 @@ export const site = {
 } as const;
 
 // Keep these allowances aligned with the mobile app's src/modules/billing/tiers.ts
-// and the backend's src/usage.py. Store checkout is authoritative for local prices.
+// and the backend's src/jyotish_agent/billing/usage.py. Store checkout is authoritative for local prices.
 export const plans = {
   free: { name: 'Free', questions: 3, daily: 3, profiles: 1, savedChats: 5, historyDays: 7 },
   pro: { name: 'Pro', questions: 45, daily: 5, profiles: 5, savedChats: 75, historyDays: 90 },
